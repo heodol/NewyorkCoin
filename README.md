@@ -1,3 +1,5 @@
+![New York Coin](https://i.imgur.com/4xxIr9Y.jpg)
+
 # newyorkc [NYC]
 
 ## FAQ
