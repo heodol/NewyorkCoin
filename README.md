@@ -40,3 +40,4 @@ rpcuser=newyorkc
 rpcpassword=nycoinpass
 
 rpcport=18823
+
