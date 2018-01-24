@@ -12,6 +12,3 @@ Security and ease of use are paramount concerns, the community is actively discu
 For more information visit the NewYorkCoin community [Discord group](https://discord.gg/Rty2ZZV)
 
 Stay tuned!
-
-
-
