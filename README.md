@@ -10,7 +10,6 @@ Security and ease of use are paramount concerns, the community is actively discu
 For more information visit the NewYorkCoin community [Discord group](https://discord.gg/Rty2ZZV)
 
 =======
-rpcport=18823
 
 ## Docker
 [Instructions for installing docker](https://www.docker.com/community-edition).
