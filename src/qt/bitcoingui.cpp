@@ -22,7 +22,7 @@
 #include "addresstablemodel.h"
 #include "transactionview.h"
 #include "overviewpage.h"
-#include "miningpage.h"
+//#include "miningpage.h"
 #include "bitcoinunits.h"
 #include "guiconstants.h"
 #include "askpassphrasedialog.h"
@@ -110,7 +110,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     // Create tabs
     overviewPage = new OverviewPage();
 
-    miningPage = new MiningPage(this);
+   // miningPage = new MiningPage(this);
 
     transactionsPage = new QWidget(this);
     QVBoxLayout *vbox = new QVBoxLayout();
@@ -128,7 +128,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 
     centralWidget = new QStackedWidget(this);
     centralWidget->addWidget(overviewPage);
-    centralWidget->addWidget(miningPage);
+    //centralWidget->addWidget(miningPage);
     centralWidget->addWidget(transactionsPage);
     centralWidget->addWidget(addressBookPage);
     centralWidget->addWidget(receiveCoinsPage);
@@ -150,14 +150,14 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     frameBlocksLayout->setContentsMargins(3,0,3,0);
     frameBlocksLayout->setSpacing(3);
     labelEncryptionIcon = new QLabel();
-    labelMiningIcon = new QLabel();
+    //labelMiningIcon = new QLabel();
     labelConnectionsIcon = new QLabel();
     labelBlocksIcon = new QLabel();
     frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelEncryptionIcon);
     frameBlocksLayout->addStretch();
-    frameBlocksLayout->addWidget(labelMiningIcon);
-    frameBlocksLayout->addStretch();
+    //frameBlocksLayout->addWidget(labelMiningIcon);
+    //frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelConnectionsIcon);
     frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelBlocksIcon);
@@ -215,10 +215,10 @@ void BitcoinGUI::createActions()
     overviewAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_1));
     tabGroup->addAction(overviewAction);
 
-    miningAction = new QAction(QIcon(":/icons/mining"), tr("&Mining"), this);
-    miningAction->setToolTip(tr("Mining configuration"));
-    miningAction->setCheckable(true);
-    tabGroup->addAction(miningAction);
+   // miningAction = new QAction(QIcon(":/icons/mining"), tr("&Mining"), this);
+   // miningAction->setToolTip(tr("Mining configuration"));
+   // miningAction->setCheckable(true);
+   // tabGroup->addAction(miningAction);
 
     historyAction = new QAction(QIcon(":/icons/history"), tr("&History"), this);
     historyAction->setToolTip(tr("Browse transaction history"));
@@ -261,7 +261,7 @@ void BitcoinGUI::createActions()
 
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(gotoOverviewPage()));
-    connect(miningAction, SIGNAL(triggered()), this, SLOT(gotoMiningPage()));
+    //connect(miningAction, SIGNAL(triggered()), this, SLOT(gotoMiningPage()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
     connect(addressBookAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
@@ -360,7 +360,7 @@ void BitcoinGUI::createToolBars()
     toolbar->addAction(receiveCoinsAction);
     toolbar->addAction(historyAction);
     toolbar->addAction(addressBookAction);
-    toolbar->addAction(miningAction);
+    //toolbar->addAction(miningAction);
 #ifdef FIRST_CLASS_MESSAGING
     toolbar->addAction(firstClassMessagingAction);
 #endif
@@ -402,8 +402,8 @@ void BitcoinGUI::setClientModel(ClientModel *clientModel)
         setNumBlocks(clientModel->getNumBlocks(), clientModel->getNumBlocksOfPeers());
         connect(clientModel, SIGNAL(numBlocksChanged(int,int)), this, SLOT(setNumBlocks(int,int)));
 
-        setMining(false, 0);
-        connect(clientModel, SIGNAL(miningChanged(bool,int)), this, SLOT(setMining(bool,int)));
+        //setMining(false, 0);
+        //connect(clientModel, SIGNAL(miningChanged(bool,int)), this, SLOT(setMining(bool,int)));
 
         // Report errors from network/worker thread
         connect(clientModel, SIGNAL(error(QString,QString,bool)), this, SLOT(error(QString,QString,bool)));
@@ -430,7 +430,7 @@ void BitcoinGUI::setWalletModel(WalletModel *walletModel)
         receiveCoinsPage->setModel(walletModel->getAddressTableModel());
         sendCoinsPage->setModel(walletModel);
         signVerifyMessageDialog->setModel(walletModel);
-        miningPage->setModel(clientModel);
+        //miningPage->setModel(clientModel);
 
         setEncryptionStatus(walletModel->getEncryptionStatus());
         connect(walletModel, SIGNAL(encryptionStatusChanged(int)), this, SLOT(setEncryptionStatus(int)));
@@ -637,13 +637,13 @@ void BitcoinGUI::setMining(bool mining, int hashrate)
 {
     if (mining)
     {
-        labelMiningIcon->setPixmap(QIcon(":/icons/mining_active").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
-        labelMiningIcon->setToolTip(tr("Mine newyorkcs at %1 hashes per second").arg(hashrate));
+        //labelMiningIcon->setPixmap(QIcon(":/icons/mining_active").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
+       // labelMiningIcon->setToolTip(tr("Mine newyorkcs at %1 hashes per second").arg(hashrate));
     }
     else
     {
-        labelMiningIcon->setPixmap(QIcon(":/icons/mining_inactive").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
-        labelMiningIcon->setToolTip(tr("Not mining newyorkcs"));
+        //labelMiningIcon->setPixmap(QIcon(":/icons/mining_inactive").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
+        //labelMiningIcon->setToolTip(tr("Not mining newyorkcs"));
     }
 }
 
@@ -751,11 +751,11 @@ void BitcoinGUI::gotoOverviewPage()
 
 void BitcoinGUI::gotoMiningPage()
 {
-    miningAction->setChecked(true);
-    centralWidget->setCurrentWidget(miningPage);
+   // miningAction->setChecked(true);
+   // centralWidget->setCurrentWidget(miningPage);
 
-    exportAction->setEnabled(false);
-    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
+   // exportAction->setEnabled(false);
+   // disconnect(exportAction, SIGNAL(triggered()), 0, 0);
 }
 
 void BitcoinGUI::gotoHistoryPage()
