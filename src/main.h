@@ -33,7 +33,8 @@ static const unsigned int MAX_BLOCK_SIZE = 1000000;
 static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;
 static const unsigned int MAX_BLOCK_SIGOPS = MAX_BLOCK_SIZE/50;
 static const unsigned int MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;
-static const int64 MIN_TX_FEE = 100000000;
+static const int64 MIN_TX_FEE = 0;
+static const int64 DUST_LIMIT = 1000000;
 static const int64 MIN_RELAY_TX_FEE = MIN_TX_FEE;
 static const int64 MAX_MONEY = 10000000000 * COIN;
 inline bool MoneyRange(int64 nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
@@ -557,8 +558,8 @@ public:
 
         // To limit dust spam, add MIN_TX_FEE/MIN_RELAY_TX_FEE for any output that is less than 0.01
         BOOST_FOREACH(const CTxOut& txout, vout)
-            if (txout.nValue < COIN)
-                nMinFee += nBaseFee;
+            if (txout.nValue < DUST_LIMIT)
+                nMinFee += DUST_LIMIT;
 
         // Raise the price as the block approaches full
         if (nBlockSize != 1 && nNewBlockSize >= MAX_BLOCK_SIZE_GEN/2)
