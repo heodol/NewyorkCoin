@@ -33,7 +33,8 @@ static const unsigned int MAX_BLOCK_SIZE = 1000000;
 static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;
 static const unsigned int MAX_BLOCK_SIGOPS = MAX_BLOCK_SIZE/50;
 static const unsigned int MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;
-static const int64 MIN_TX_FEE = 100000000;
+static const int64 MIN_TX_FEE = 0;
+static const int64 DUST_LIMIT = 1000000;
 static const int64 MIN_RELAY_TX_FEE = MIN_TX_FEE;
 static const int64 MAX_MONEY = 10000000000 * COIN;
 inline bool MoneyRange(int64 nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
@@ -557,8 +558,8 @@ public:
 
         // To limit dust spam, add MIN_TX_FEE/MIN_RELAY_TX_FEE for any output that is less than 0.01
         BOOST_FOREACH(const CTxOut& txout, vout)
-            if (txout.nValue < COIN)
-                nMinFee += nBaseFee;
+            if (txout.nValue < DUST_LIMIT)
+                nMinFee += DUST_LIMIT;
 
         // Raise the price as the block approaches full
         if (nBlockSize != 1 && nNewBlockSize >= MAX_BLOCK_SIZE_GEN/2)
@@ -1572,7 +1573,7 @@ public:
     bool CheckSignature()
     {
         CKey key;
-        if (!key.SetPubKey(ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9")))
+        if (!key.SetPubKey(ParseHex("04AFC6B9D279C647C67C250BC4C68F5E9BD714867D8D45B6E54FEEFFA6CB9074EE7CBF69EB8FF388304604C2E00661601502B42E3CF71E934B4A5EAB0D5B209BFD")))
             return error("CAlert::CheckSignature() : SetPubKey failed");
         if (!key.Verify(Hash(vchMsg.begin(), vchMsg.end()), vchSig))
             return error("CAlert::CheckSignature() : verify signature failed");

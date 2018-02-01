@@ -2,24 +2,24 @@
 # Distributed under the MIT/X11 software license, see the accompanying
 # file license.txt or http://www.opensource.org/licenses/mit-license.php.
 
-USE_UPNP:=0
+USE_UPNP:=1
 
 INCLUDEPATHS= \
- -I"C:\boost_1_53_0" \
- -I"C:\db-4.8.30.NC\build_unix" \
- -I"C:\openssl-1.0.1e\include" 
-
+ -I"d:\deps\boost_1_55_0" \
+ -I"d:\deps\db-4.8.30.NC\build_unix" \
+ -I"d:\deps\openssl-1.0.1j\include" 
+ 
 
 LIBPATHS= \
- -L"C:\boost_1_53_0\stage\lib" \
- -L"C:\db-4.8.30.NC\build_unix" \
- -L"C:\openssl-1.0.1e" 
+ -L"d:\deps\boost_1_55_0\stage\lib" \
+ -L"d:\deps\db-4.8.30.NC\build_unix" \
+ -L"d:\deps\openssl-1.0.1j" 
 
 LIBS= \
- -l boost_system-mgw45-mt-d-1_53 \
- -l boost_filesystem-mgw45-mt-d-1_53 \
- -l boost_program_options-mgw45-mt-d-1_53 \
- -l boost_thread-mgw45-mt-d-1_53 \
+ -l boost_system-mgw46-mt-s-1_55 \
+ -l boost_filesystem-mgw46-mt-s-1_55 \
+ -l boost_program_options-mgw46-mt-s-1_55 \
+ -l boost_thread-mgw46-mt-s-1_55 \
  -l db_cxx \
  -l ssl \
  -l crypto
@@ -31,7 +31,8 @@ CFLAGS=-mthreads -O2 -w -Wall -Wextra -Wformat -Wformat-security -Wno-unused-par
 TESTDEFS = -DTEST_DATA_DIR=$(abspath test/data)
 
 ifdef USE_UPNP
- LIBPATHS += -L"C:\upnpc-exe-win32"
+ INCLUDEPATHS+= -I"d:\deps\miniupnpc"
+ LIBPATHS += -L"d:\deps\miniupnpc"
  LIBS += -l miniupnpc -l iphlpapi
  DEFS += -DSTATICLIB -DUSE_UPNP=$(USE_UPNP)
 endif
@@ -85,7 +86,7 @@ obj-test/%.o: test/%.cpp $(HEADERS)
 	g++ -c $(TESTDEFS) $(CFLAGS) -o $@ $<
 
 test_newyorkc.exe: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
-	g++ $(CFLAGS) -o $@ $(LIBPATHS) $^ -lboost_unit_test_framework-mgw45-mt-d-1_53 $(LIBS)
+	g++ $(CFLAGS) -o $@ $(LIBPATHS) $^ -lboost_unit_test_framework-mgw46-mt-s-1_55 $(LIBS)
 
 clean:
 	rm -f newyorkcd.exe test_newyorkc.exe
