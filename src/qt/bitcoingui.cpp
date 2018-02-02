@@ -142,10 +142,12 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 
     // Status bar notification icons
     QFrame *frameBlocks = new QFrame();
+    frameBlocks->setFrameShadow(QFrame::Plain);
+    frameBlocks->setLineWidth(0);
     frameBlocks->setContentsMargins(0,0,0,0);
     frameBlocks->setMinimumWidth(80);
     frameBlocks->setMaximumWidth(80);
-    frameBlocks->setFrameShadow(QFrame::Plain);
+
     QHBoxLayout *frameBlocksLayout = new QHBoxLayout(frameBlocks);
     frameBlocksLayout->setContentsMargins(3,0,3,0);
     frameBlocksLayout->setSpacing(3);
@@ -164,9 +166,11 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     frameBlocksLayout->addStretch();
 
     // Progress bar and label for blocks download
+    QString progressBarStlye = QString("QProgressBar {border: 1px solid grey;border-radius: 2px;}QProgressBar::chunk {background-color: #0f75bc;width: 20px; }");
     progressBarLabel = new QLabel();
     progressBarLabel->setVisible(false);
-    progressBar = new QProgressBar();
+    progressBar = new QProgressBar();   
+    progressBar->setStyleSheet(progressBarStlye);
     progressBar->setAlignment(Qt::AlignCenter);
     progressBar->setVisible(false);
 
