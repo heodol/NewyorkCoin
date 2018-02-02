@@ -82,7 +82,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 #endif
 
 	//specify a new font.
-//	QFont newFont("Comic Sans MS", 10);
+
 #ifdef Q_WS_MAC
 	QFont newFont("Lucida Grande", 12);
 #else
@@ -145,9 +145,11 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     frameBlocks->setContentsMargins(0,0,0,0);
     frameBlocks->setMinimumWidth(80);
     frameBlocks->setMaximumWidth(80);
+    frameBlocks->setFrameShadow(QFrame::Plain);
     QHBoxLayout *frameBlocksLayout = new QHBoxLayout(frameBlocks);
     frameBlocksLayout->setContentsMargins(3,0,3,0);
     frameBlocksLayout->setSpacing(3);
+
     labelEncryptionIcon = new QLabel();
 
     labelConnectionsIcon = new QLabel();
