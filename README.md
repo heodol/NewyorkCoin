@@ -1,4 +1,4 @@
-![New York Coin](https://i.imgur.com/4xxIr9Y.jpg)
+![New York Coin](https://github.com/NewYorkCoin-NYC/NYC-site/raw/master/img/logo.png)
 
 # newyorkc [NYC]
 
