@@ -35,9 +35,9 @@ UI_DIR = build
 # use: qmake "RELEASE=1"
 contains(RELEASE, 1) {
     # Mac: compile for maximum compatibility (10.5, 32-bit)
-    macx:QMAKE_CXXFLAGS += -mmacosx-version-min=10.5 -arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk
-    macx:QMAKE_CFLAGS += -mmacosx-version-min=10.5 -arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk
-    macx:QMAKE_LFLAGS += -mmacosx-version-min=10.5 -arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk
+    macx:QMAKE_CXXFLAGS += -mmacosx-version-min=10.7 -arch i386 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
+    macx:QMAKE_CFLAGS += -mmacosx-version-min=10.7 -arch i386 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
+    macx:QMAKE_LFLAGS += -mmacosx-version-min=10.7 -arch i386 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
     !windows:!macx {
         # Linux: static link
         LIBS += -Wl,-Bstatic
@@ -307,7 +307,7 @@ isEmpty(BOOST_THREAD_LIB_SUFFIX) {
 }
 
 isEmpty(BDB_LIB_PATH) {
-    macx:BDB_LIB_PATH = /usr/local/Cellar/berkeley-db/5.3.21/lib/
+    macx:BDB_LIB_PATH = /usr/local/Cellar/berkeley-db/5.3.28/lib/
 }
 
 isEmpty(BDB_LIB_SUFFIX) {
@@ -315,23 +315,23 @@ isEmpty(BDB_LIB_SUFFIX) {
 }
 
 isEmpty(BDB_INCLUDE_PATH) {
-    macx:BDB_INCLUDE_PATH = /usr/local/Cellar/berkeley-db/5.3.21/include/
+    macx:BDB_INCLUDE_PATH = /usr/local/Cellar/berkeley-db/5.3.28/include/
 }
 
 isEmpty(BOOST_LIB_PATH) {
-    macx:BOOST_LIB_PATH = /usr/local/Cellar/boost/1.55.0/lib/
+    macx:BOOST_LIB_PATH = /usr/local/Cellar/boost@1.55/1.55.0_1/lib/
 }
 
 isEmpty(BOOST_INCLUDE_PATH) {
-    macx:BOOST_LIB_PATH = /usr/local/Cellar/boost/1.55.0/include/
+    macx:BOOST_INCLUDE_PATH = /usr/local/Cellar/boost@1.55/1.55.0_1/include/
 }
 
 isEmpty(OPENSSL_INCLUDE_PATH) {
-    macx:OPENSSL_INCLUDE_PATH = /usr/local/Cellar/openssl/1.0.1f/include/
+    macx:OPENSSL_INCLUDE_PATH = /usr/local/Cellar/openssl/1.0.2n/include/
 }
 
 isEmpty(OPENSSL_LIB_PATH) {
-    macx:OPENSSL_LIB_PATH = /usr/local/Cellar/openssl/1.0.1f/lib/
+    macx:OPENSSL_LIB_PATH = /usr/local/Cellar/openssl/1.0.2n/lib/
 }
 
 windows:LIBS += -lws2_32 -lshlwapi -lmswsock
@@ -377,3 +377,4 @@ contains(RELEASE, 1) {
 }
 
 system($$QMAKE_LRELEASE -silent $$_PRO_FILE_)
+
