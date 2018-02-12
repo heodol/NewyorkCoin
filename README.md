@@ -1,7 +1,5 @@
 ![New York Coin](https://github.com/NewYorkCoin-NYC/NYC-site/raw/master/img/logo.png)
 
-# newyorkc [NYC]
-
 ## This repo is an NYC community driven effort to update the existing NYC codebase and wallets.
 
 A lot has happened in the crypto space since 2014 and the NewYorkCoin community has grown dramatically.
