@@ -26,16 +26,17 @@ RUN apt-get update && apt-get -y upgrade
 # Basic Dependencies
 #
 RUN apt-get install -y git \
+            telnet \
             ntp \
             unzip \
             build-essential \
             libssl-dev \
-            libdb-dev \
-            libdb++-dev \
+            libdb5.1++-dev \
+            libdb5.1-dev \
             libboost-all-dev \
             libqrencode-dev \
-            aptitude && aptitude install -y miniupnpc \
-                                 libminiupnpc-dev
+            libminiupnpc-dev \
+            miniupnpc
 
 # ===============================================================================
 # Set working directory
@@ -47,8 +48,6 @@ WORKDIR /work
 #
 
 RUN mkdir -p /root/.newyorkc/
-COPY docker/config/newyorkc.conf /root/.newyorkc/
-RUN chmod u+r-wx,g-rwx,o-rwx /root/.newyorkc/newyorkc.conf
 
 # ===============================================================================
 # System Initialization
@@ -64,3 +63,4 @@ RUN cd src && \
 # Set default CMD
 CMD /work/src/newyorkcd && tail -f -n 10 /root/.newyorkc/debug.log
 
+EXPOSE 17020 27020 18823
