@@ -1,1 +1,2 @@
 docker/data/
+src/obj/*.o
