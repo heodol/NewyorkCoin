@@ -1,12 +1,14 @@
 //
 // Unit tests for denial-of-service detection/prevention code
 //
+#include <boost/foreach.hpp>
 #include <algorithm>
+
 
 #include <boost/assign/list_of.hpp> // for 'map_list_of()'
 #include <boost/date_time/posix_time/posix_time_types.hpp>
 #include <boost/test/unit_test.hpp>
-#include <boost/foreach.hpp>
+
 
 #include "main.h"
 #include "wallet.h"
@@ -14,6 +16,8 @@
 #include "util.h"
 
 #include <stdint.h>
+
+
 
 // Tests this internal-to-main.cpp method:
 extern bool AddOrphanTx(const CTransaction& tx);
@@ -106,10 +110,11 @@ BOOST_AUTO_TEST_CASE(DoS_checknbits)
         map_list_of(1394102925,504365040)(1394420443,472678783)
         (1409164717,486677462)(1424893733,486737111)(1440275208,486824683)
         (1455780904,486690221)(1471368362,486857414)(1486453565,487040736)
-        (1501577833,486987683)
+        (1501577833,486987683);
 
     // Make sure CheckNBits considers every combination of block-chain-lock-in-points
     // "sane":
+	
     BOOST_FOREACH(const BlockData::value_type& i, chainData)
     {
         BOOST_FOREACH(const BlockData::value_type& j, chainData)
@@ -117,7 +122,8 @@ BOOST_AUTO_TEST_CASE(DoS_checknbits)
             BOOST_CHECK(CheckNBits(i.second, i.first, j.second, j.first));
         }
     }
-
+	
+	
     // Test a couple of insane combinations:
     BlockData::value_type firstcheck = *(chainData.begin());
     BlockData::value_type lastcheck = *(chainData.rbegin());
