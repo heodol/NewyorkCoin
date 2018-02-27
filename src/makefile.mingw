@@ -52,6 +52,7 @@ LIBS= \
 
 DEFS= -D_MT -DWIN32 -D_WINDOWS -BOOST_THREAD_USE_LIB -BOOST_SPIRIT_THREADSAFE
 DEBUGFLAGS=
+# removed  from cflags
 CFLAGS=  -static -fno-keep-inline-dllexport -fexceptions -mthreads -w -Wall -Wextra -Wformat -Wformat-security -Wno-unused-parameter -Wstack-protector $(DEBUGFLAGS) $(DEFS) $(INCLUDEPATHS)
 # enable: ASLR, DEP and large address aware
 LDFLAGS=-Wl,--dynamicbase -Wl,--nxcompat -Wl,--large-address-aware
