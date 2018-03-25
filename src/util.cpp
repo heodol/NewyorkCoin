@@ -1126,35 +1126,40 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
     if (!streamConfig.good())
     {
         boost::filesystem::path ConfPath;
-               ConfPath = GetDefaultDataDir() / "newyorkc.conf";
-               FILE* ConfFile = fopen(ConfPath.string().c_str(), "w");
-               fprintf(ConfFile, "listen=1\n");
-               fprintf(ConfFile, "server=1\n");
-               fprintf(ConfFile, "maxconnections=100\n");
-               fprintf(ConfFile, "rpcuser=NewYorkCoin_User\n");
-
-               char s[26];
-               for (int i = 0; i < 26; ++i)
-               {
-                   s[i] = alphanum[rand() % (sizeof(alphanum) - 1)];
-               }
-
-               std::string str(s);
-               std::string rpcpass = "rpcpassword=" + str + "\n";
-               fprintf(ConfFile, rpcpass.c_str());
-               fprintf(ConfFile, "port=17020\n");
-               fprintf(ConfFile, "rpcport=18823\n");
-               fprintf(ConfFile, "rpcconnect=127.0.0.1\n");
-               fprintf(ConfFile, "addnode=5.101.122.184\n");
-               fprintf(ConfFile, "addnode=24.141.187.231\n");
-               fprintf(ConfFile, "addnode=24.190.179.138\n");
-               fprintf(ConfFile, "addnode=50.82.94.170\n");
-               fprintf(ConfFile, "addnode=69.118.35.147\n");
-               fprintf(ConfFile, "addnode=82.33.54.166\n");
-               fprintf(ConfFile, "addnode=107.155.190.222\n");
-               fprintf(ConfFile, "addnode=118.208.191.227\n");
-               fclose(ConfFile);
-               goto startConfigFile;
+                       ConfPath = GetDefaultDataDir() / "newyorkc.conf";
+                       FILE* ConfFile = fopen(ConfPath.string().c_str(), "w");
+                       fprintf(ConfFile, "rpcuser=NewYorkCoin_User\n");
+                       char s[26];
+                       for (int i = 0; i < 26; ++i)
+                       {
+                           s[i] = alphanum[rand() % (sizeof(alphanum) - 1)];
+                       }
+                       std::string str(s);
+                       std::string rpcpass = "rpcpassword=" + str + "\n";
+                       fprintf(ConfFile, rpcpass.c_str());
+                       fprintf(ConfFile, "rpcconnect=127.0.0.1\n");
+                       fprintf(ConfFile, "port=17020\n");
+                       fprintf(ConfFile, "rpcport=18823\n");
+                       fprintf(ConfFile, "listen=1\n");
+                       fprintf(ConfFile, "server=1\n");
+                       fprintf(ConfFile, "maxconnections=100\n");
+                       fprintf(ConfFile, "addnode=62.213.218.23\n");
+                       fprintf(ConfFile, "addnode=67.86.78.250\n");
+                       fprintf(ConfFile, "addnode=71.34.149.166\n");
+                       fprintf(ConfFile, "addnode=71.68.213.80\n");
+                       fprintf(ConfFile, "addnode=73.54.142.171\n");
+                       fprintf(ConfFile, "addnode=76.95.178.229\n");
+                       fprintf(ConfFile, "addnode=82.251.255.101\n");
+                       fprintf(ConfFile, "addnode=141.126.150.52\n");
+                       fprintf(ConfFile, "addnode=157.161.128.51\n");
+                       fprintf(ConfFile, "addnode=163.172.222.175\n");
+                       fprintf(ConfFile, "addnode=170.247.210.88\n");
+                       fprintf(ConfFile, "addnode=173.56.27.29\n");
+                       fprintf(ConfFile, "addnode=174.66.176.135\n");
+                       fprintf(ConfFile, "addnode=207.38.237.43\n");
+                       fprintf(ConfFile, "addnode=209.122.196.148\n");
+                       fclose(ConfFile);
+                       goto startConfigFile;
 
     }
 
