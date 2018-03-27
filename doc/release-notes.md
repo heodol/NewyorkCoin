@@ -4,6 +4,7 @@ Previous codebase: (Dogecoin 0.6.3)
 
 All updates from Dogecoin 0.6.3 to 0.8.7.4 are included in this release.
 
+Dogecoin 0.8.7.4 changes
 =============
 - Enforce v2 blocks at height 710000 on mainnet, 400000 on testnet
 - Add `-maxorphantx=<n>` and `-maxorphanblocks=<n>` options for control over the maximum orphan transactions and blocks
