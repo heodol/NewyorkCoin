@@ -1,1 +1,5 @@
-docker/data/
+docker/*/*
+!docker/*/newyorkc.conf
+src/obj/*.o
+src/test/data/results*.txt
+

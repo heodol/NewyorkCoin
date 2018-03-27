@@ -1,7 +1,4 @@
 // Copyright (c) 2011-2012 The Bitcoin developers
-// Copyright (c) 2011-2012 Litecoin Developers
-// Copyright (c) 2013 Dogecoin Developers
-// Copyright (c) 2014 newyorkc Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -108,7 +105,7 @@ static void push_lock(void* c, const CLockLocation& locklocation, bool fTry)
 
 static void pop_lock()
 {
-    if (fDebug) 
+    if (fDebug)
     {
         const CLockLocation& locklocation = (*lockstack).rbegin()->second;
         printf("Unlocked: %s\n", locklocation.ToString().c_str());

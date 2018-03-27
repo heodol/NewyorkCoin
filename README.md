@@ -16,8 +16,14 @@ For more information visit the NewYorkCoin community [Discord group](https://dis
 
 First, build the image.
 ```
+# Git clone this repo
+git clone https://github.com/NewYorkCoin-NYC/nycoin.git
+
 # go to the same directory Dockerfile exists
-docker build .
+cd nycoin
+# Build the container and tag it with a usable name + version
+docker build -t newyorkcoind:v1.0.3 .
+
 ```
 
 You should see logs similar to below. This takes a while, as it is provisioning the image by installing dependencies and building the nycoin binary.
@@ -41,16 +47,19 @@ Step 1/12 : FROM ubuntu:14.04
  ---> 062552e63b8c
 Removing intermediate container 524ece488798
 Successfully built 062552e63b8c
+Successfully built newyorkcoind:v1.0.3
 ```
 
 Then, copy the unique identifier built by Docker (in this case, `062552e63b8c`).
 ```
-➜  nycoin git:(master) ✗ docker run -d 062552e63b8c
+➜  nycoin git:(master) ✗ docker run -d newyorkcoind:v1.0.3
 93f55a2fbc1082641fc8d99f9b3be182e46bd180f8e680fb69335d0b334fdf7a
 ```
 
-This runs the binary, `newyorkcd`, with no command arguments.
+### Start the container on either mainnet or testnet:
+Run docker with the config provided in either docker/mainnet of docker/testnet. Feel free to modifiy the files or create a new on in a different path
+`docker run -d -v $(pwd)/docker/mainnet:/root/.newyorkc/ newyorkcoind:v1.0.3`
 
-`-d`: daemonize the container. Run `docker logs 93f55a2fbc -f` to tail the standard output.
+With: `-v`: persist the data in your host machine. 
 
-`-v`: persist the data in your host machine. Example: `docker run -d -v $(pwd)/docker/data:/root/.newyorkc/ 062552e63b8c`
+Be sure to have the newyorkc.conf is in the $(pwd)/docker/mainnet folder.
