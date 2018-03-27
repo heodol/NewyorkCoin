@@ -1,6 +1,4 @@
-![New York Coin](https://i.imgur.com/4xxIr9Y.jpg)
-
-# newyorkc [NYC]
+![New York Coin](https://github.com/NewYorkCoin-NYC/NYC-site/raw/master/img/logo.png)
 
 ## This repo is an NYC community driven effort to update the existing NYC codebase and wallets.
 
