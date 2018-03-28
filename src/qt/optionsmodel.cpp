@@ -51,7 +51,7 @@ void OptionsModel::Init()
     fMinimizeToTray = settings.value("fMinimizeToTray", false).toBool();
     fMinimizeOnClose = settings.value("fMinimizeOnClose", false).toBool();
     nTransactionFee = settings.value("nTransactionFee").toLongLong();
-    bSpendZeroConfChange = settings.value("bSpendZeroConfChange").toBool();
+    bSpendZeroConfChange = settings.value("bSpendZeroConfChange", false).toBool();
     language = settings.value("language", "").toString();
     fCoinControlFeatures = settings.value("fCoinControlFeatures", false).toBool();
 
