@@ -1,5 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2017-2018 NewYorkCoin Community developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -1142,7 +1143,8 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
                        fprintf(ConfFile, "rpcport=18823\n");
                        fprintf(ConfFile, "listen=1\n");
                        fprintf(ConfFile, "server=1\n");
-                       fprintf(ConfFile, "maxconnections=100\n");
+                       fprintf(ConfFile, "maxconnections=20\n");
+                       fprintf(ConfFile, "addnode=nyc.theincrediblemachine.tv\n");
                        fprintf(ConfFile, "addnode=62.213.218.23\n");
                        fprintf(ConfFile, "addnode=67.86.78.250\n");
                        fprintf(ConfFile, "addnode=71.34.149.166\n");
