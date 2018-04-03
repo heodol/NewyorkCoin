@@ -27,7 +27,7 @@ INCLUDEPATHS= \
  -I"$(CURDIR)" \
  -I"$(DEPSDIR)/include" \
  -I"$(DEPSDIR)/boost_1_57_0/" \
- -I"$(DEPSDIR)/openssl-1.0.2n/include/" \
+ -I"$(DEPSDIR)/openssl-1.0.2o/include/" \
  -I"$(DEPSDIR)/db-4.8.30.NC/build_unix/" \
  -I"$(DEPSDIR)/miniupnpc/"
  
@@ -36,7 +36,7 @@ LIBPATHS= \
  -L"$(DEPSDIR)/lib" \
  -L"$(DEPSDIR)/boost_1_57_0/stage/lib" \
  -L"$(DEPSDIR)/db-4.8.30.NC/build_unix" \
- -L"$(DEPSDIR)/openssl-1.0.2n/dist/lib" \
+ -L"$(DEPSDIR)/openssl-1.0.2o/" \
  -L"$(DEPSDIR)/miniupnpc" 
 
 LIBS= \
