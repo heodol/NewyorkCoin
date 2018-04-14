@@ -1108,7 +1108,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash) {
 	int rand4 = 0;
 	int rand5 = 0;
 
-    // Start of botched premine
+    // Start of botched pre-mine
     // The following if/else block is overridden by the subsequent if/else block
     // Leaving this for historical accuracy
 	if (nHeight == 1) {
@@ -1117,7 +1117,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash) {
 	else if (nHeight < 101) {
 		nSubsidy = 1 * COIN;
 	}
-	// End of botched premine
+	// End of botched pre-mine
 
 	if (nHeight < 100000) {
 		nSubsidy = (1 + rand) * COIN;
