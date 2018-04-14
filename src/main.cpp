@@ -366,7 +366,7 @@ unsigned int LimitOrphanTxSize(unsigned int nMaxOrphans)
 bool CTxOut::IsDust() const
 {
     // newyorkc: IsDust() detection disabled, allows any valid dust to be relayed.
-    // The fees imposed on each dust txo is considered sufficient spam deterrant. 
+    // The fees imposed on each dust txo is considered sufficient spam deterrant.
     return false;
 }
 
@@ -1096,6 +1096,7 @@ int static generateMTRandom(unsigned int s, int range) {
 
 int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash) {
 	int64 nSubsidy = 10000 * COIN;
+	int64 minSubsidy = 156 * COIN;
 
     std::string cseed_str = prevHash.ToString().substr(7,7);
 	const char* cseed = cseed_str.c_str();
@@ -1107,12 +1108,16 @@ int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash) {
 	int rand4 = 0;
 	int rand5 = 0;
 
+    // Start of botched premine
+    // The following if/else block is overridden by the subsequent if/else block
+    // Leaving this for historical accuracy
 	if (nHeight == 1) {
 		nSubsidy = 97000000 * COIN;
 	}
 	else if (nHeight < 101) {
 		nSubsidy = 1 * COIN;
 	}
+	// End of botched premine
 
 	if (nHeight < 100000) {
 		nSubsidy = (1 + rand) * COIN;
@@ -1146,7 +1151,20 @@ int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash) {
 		seed = hex2long(cseed);
 		rand5 = generateMTRandom(seed, 31249);
 		nSubsidy = (1 + rand5) * COIN;
+	} else if(nHeight > 4500000) {   	             // 2018-4-14 - Block height 4,234,899
+	    nSubsidy = 5000 * COIN;                      // 250,000 blocks is ~3 months based on data from 2018
+	} else if(nHeight > 5000000) {
+	    nSubsidy = 2500 * COIN;
+	} else if(nHeight > 5500000) {
+	    nSubsidy = 1250 * COIN;
+	} else if(nHeight > 6000000) {
+	    nSubsidy = 625 * COIN;
+	} else if(nHeight > 6500000) {
+	    nSubsidy = 312 * COIN;
+	} else if(nHeight > 7000000) {
+	    nSubsidy = minSubsidy;
 	}
+
 	return nSubsidy + nFees;
 }
 
@@ -1199,11 +1217,11 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBloc
 	for (unsigned int i = 1; BlockReading && BlockReading->nHeight > 0; i++) {
             if (PastBlocksMax > 0 && i > PastBlocksMax) { break; }
             PastBlocksMass++;
-            
+
             if (i == 1)        { PastDifficultyAverage.SetCompact(BlockReading->nBits); }
             else                { PastDifficultyAverage = ((CBigNum().SetCompact(BlockReading->nBits) - PastDifficultyAveragePrev) / i) + PastDifficultyAveragePrev; }
             PastDifficultyAveragePrev = PastDifficultyAverage;
-            
+
             PastRateActualSeconds                        = BlockLastSolved->GetBlockTime() - BlockReading->GetBlockTime();
             PastRateTargetSeconds                        = TargetBlocksSpacingSeconds * PastBlocksMass;
             PastRateAdjustmentRatio                        = double(1);
@@ -1214,7 +1232,7 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBloc
             EventHorizonDeviation                        = 1 + (0.7084 * pow((double(PastBlocksMass)/double(144)), -1.228));
             EventHorizonDeviationFast                = EventHorizonDeviation;
             EventHorizonDeviationSlow                = 1 / EventHorizonDeviation;
-            
+
             if (PastBlocksMass >= PastBlocksMin) {
                     if ((PastRateAdjustmentRatio <= EventHorizonDeviationSlow) || (PastRateAdjustmentRatio >= EventHorizonDeviationFast)) { assert(BlockReading); break; }
             }
@@ -1293,7 +1311,7 @@ unsigned int static GetNextWorkRequired_V1(const CBlockIndex* pindexLast, const 
     int64 nActualTimespan = pindexLast->GetBlockTime() - pindexFirst->GetBlockTime();
     printf("  nActualTimespan = %"PRI64d"  before bounds\n", nActualTimespan);
 
-	if(pindexLast->nHeight+1 > 10000)	
+	if(pindexLast->nHeight+1 > 10000)
 	{
 		if (nActualTimespan < nTargetTimespan/4)
 			nActualTimespan = nTargetTimespan/4;
@@ -1307,7 +1325,7 @@ unsigned int static GetNextWorkRequired_V1(const CBlockIndex* pindexLast, const 
 		if (nActualTimespan > nTargetTimespan*4)
 			nActualTimespan = nTargetTimespan*4;
 	}
-	else 
+	else
 	{
 		if (nActualTimespan < nTargetTimespan/16)
 			nActualTimespan = nTargetTimespan/16;
@@ -1865,7 +1883,7 @@ bool CBlock::ConnectBlock(CValidationState &state, CBlockIndex* pindex, CCoinsVi
 	{
 		prevHash = pindex->pprev->GetBlockHash();
 	}
-	
+
 	 if (vtx[0].GetValueOut() > GetBlockValue(pindex->nHeight, nFees, prevHash))
         return state.DoS(100, error("ConnectBlock() : coinbase pays too much (actual=%"PRI64d" vs limit=%"PRI64d")", vtx[0].GetValueOut(), GetBlockValue(pindex->nHeight, nFees, prevHash)));
 
