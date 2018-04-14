@@ -1153,7 +1153,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash) {
 		rand5 = generateMTRandom(seed, 31249);
 		nSubsidy = (1 + rand5) * COIN;
 	} else if(nHeight > 4500000) {   	             // 2018-4-14 - Block height 4,234,899
-	    nSubsidy = maxSubsidy / 2;                      // 250,000 blocks is ~3 months based on data from 2018
+	    nSubsidy = maxSubsidy / 2;                   // 250,000 blocks is ~3 months based on data from 2018
 	} else if(nHeight > 5000000) {
 	    nSubsidy = maxSubsidy / 4;
 	} else if(nHeight > 5500000) {
