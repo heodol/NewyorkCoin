@@ -622,7 +622,10 @@ int64 CTransaction::GetMinFee(unsigned int nBlockSize, bool fAllowFree,
         //   multiple transactions instead of one big transaction to avoid fees.
         // * If we are creating a transaction we allow transactions up to 5,000 bytes
         //   to be considered safe and assume they can likely make it into this section.
-        if (nBytes < (mode == GMF_SEND ? 5000 : (DEFAULT_BLOCK_PRIORITY_SIZE - 1000)))
+        if (nBytes < (mode == GMF_SEND ? 10000 : (DEFAULT_BLOCK_PRIORITY_SIZE - 1000)))
+            nMinFee = 0;
+
+        if(nNewBlockSize < 27000)
             nMinFee = 0;
     }
 
