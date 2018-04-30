@@ -1095,7 +1095,7 @@ int static generateMTRandom(unsigned int s, int range) {
 }
 
 int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash) {
-    int64 maxSubsidy = 10000 * COIN;
+        int64 maxSubsidy = 10000 * COIN;
 	int64 minSubsidy = 156 * COIN;
 	int64 nSubsidy = maxSubsidy;
 
@@ -1124,11 +1124,11 @@ int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash) {
         {
                 if (nHeight < 11000) {
                         nSubsidy = (1 + rand) * COIN;
-                } else if (nHeight < 11300) {
+                } else if (nHeight < 11100) {
                         nSubsidy = maxSubsidy;
-                } else if(nHeight > 11600) {
+                } else if(nHeight > 11300) {
                         nSubsidy = maxSubsidy / 2;
-                } else if(nHeight > 11800) {
+                } else if(nHeight > 11600) {
                         nSubsidy = maxSubsidy / 4;
                 } else if(nHeight > 12000) {
                         nSubsidy = maxSubsidy / 8;
