@@ -1120,52 +1120,72 @@ int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash) {
 	}
 	// End of botched pre-mine
 
-	if (nHeight < 100000) {
-		nSubsidy = (1 + rand) * COIN;
-	} else if (nHeight < 200000) {
-		cseed_str = prevHash.ToString().substr(7,7);
-		cseed = cseed_str.c_str();
-		seed = hex2long(cseed);
-		rand1 = generateMTRandom(seed, 499999);
-		nSubsidy = (1 + rand1) * COIN;
-	} else if (nHeight < 300000) {
-		cseed_str = prevHash.ToString().substr(6,7);
-		cseed = cseed_str.c_str();
-		seed = hex2long(cseed);
-		rand2 = generateMTRandom(seed, 249999);
-		nSubsidy = (1 + rand2) * COIN;
-	} else if (nHeight < 400000) {
-		cseed_str = prevHash.ToString().substr(7,7);
-		cseed = cseed_str.c_str();
-		seed = hex2long(cseed);
-		rand3 = generateMTRandom(seed, 124999);
-		nSubsidy = (1 + rand3) * COIN;
-	} else if (nHeight < 500000) {
-		cseed_str = prevHash.ToString().substr(7,7);
-		cseed = cseed_str.c_str();
-		seed = hex2long(cseed);
-		rand4 = generateMTRandom(seed, 62499);
-		nSubsidy = (1 + rand4) * COIN;
-	} else if (nHeight < 600000) {
-		cseed_str = prevHash.ToString().substr(6,7);
-		cseed = cseed_str.c_str();
-		seed = hex2long(cseed);
-		rand5 = generateMTRandom(seed, 31249);
-		nSubsidy = (1 + rand5) * COIN;
-	} else if(nHeight > 4500000) {   	             // 2018-4-14 - Block height 4,234,899
-	    nSubsidy = maxSubsidy / 2;                   // 250,000 blocks is ~3 months based on data from 2018
-	} else if(nHeight > 5000000) {
-	    nSubsidy = maxSubsidy / 4;
-	} else if(nHeight > 5500000) {
-	    nSubsidy = maxSubsidy / 8;
-	} else if(nHeight > 6000000) {
-	    nSubsidy = maxSubsidy / 16;
-	} else if(nHeight > 6500000) {
-	    nSubsidy = minSubsidy * 2;
-	} else if(nHeight > 7000000) {
-	    nSubsidy = minSubsidy;
+        if (fTestNet)
+        {
+                if (nHeight < 11000) {
+                        nSubsidy = (1 + rand) * COIN;
+                } else if (nHeight < 11300) {
+                        nSubsidy = maxSubsidy;
+                } else if(nHeight > 11600) {
+                        nSubsidy = maxSubsidy / 2;
+                } else if(nHeight > 11800) {
+                        nSubsidy = maxSubsidy / 4;
+                } else if(nHeight > 12000) {
+                        nSubsidy = maxSubsidy / 8;
+                } else if(nHeight > 13000) {
+                        nSubsidy = maxSubsidy / 16;
+                } else if(nHeight > 14000) {
+                        nSubsidy = minSubsidy * 2;
+                } else if(nHeight > 15000) {
+                        nSubsidy = minSubsidy;
+                }
 	}
-
+	else if (nHeight < 100000) {
+			nSubsidy = (1 + rand) * COIN;
+		} else if (nHeight < 200000) {
+			cseed_str = prevHash.ToString().substr(7,7);
+			cseed = cseed_str.c_str();
+			seed = hex2long(cseed);
+			rand1 = generateMTRandom(seed, 499999);
+			nSubsidy = (1 + rand1) * COIN;
+		} else if (nHeight < 300000) {
+			cseed_str = prevHash.ToString().substr(6,7);
+			cseed = cseed_str.c_str();
+			seed = hex2long(cseed);
+			rand2 = generateMTRandom(seed, 249999);
+			nSubsidy = (1 + rand2) * COIN;
+		} else if (nHeight < 400000) {
+			cseed_str = prevHash.ToString().substr(7,7);
+			cseed = cseed_str.c_str();
+			seed = hex2long(cseed);
+			rand3 = generateMTRandom(seed, 124999);
+			nSubsidy = (1 + rand3) * COIN;
+		} else if (nHeight < 500000) {
+			cseed_str = prevHash.ToString().substr(7,7);
+			cseed = cseed_str.c_str();
+			seed = hex2long(cseed);
+			rand4 = generateMTRandom(seed, 62499);
+			nSubsidy = (1 + rand4) * COIN;
+		} else if (nHeight < 600000) {
+			cseed_str = prevHash.ToString().substr(6,7);
+			cseed = cseed_str.c_str();
+			seed = hex2long(cseed);
+			rand5 = generateMTRandom(seed, 31249);
+			nSubsidy = (1 + rand5) * COIN;
+		} else if(nHeight > 4500000) {   	             // 2018-4-14 - Block height 4,234,899
+			nSubsidy = maxSubsidy / 2;                   // 250,000 blocks is ~3 months based on data from 2018
+		} else if(nHeight > 5000000) {
+			nSubsidy = maxSubsidy / 4;
+		} else if(nHeight > 5500000) {
+		        nSubsidy = maxSubsidy / 8;
+		} else if(nHeight > 6000000) {
+		        nSubsidy = maxSubsidy / 16;
+		} else if(nHeight > 6500000) {
+		        nSubsidy = minSubsidy * 2;
+		} else if(nHeight > 7000000) {
+		        nSubsidy = minSubsidy;
+		}
+	}
 	return nSubsidy + nFees;
 }
 
