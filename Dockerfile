@@ -60,7 +60,7 @@ RUN mkdir -p /root/.newyorkcoin
 #
 
 ## Copy folders
-RUN git clone https://github.com/MrSlosh/NewYorkCoin-AuxPow.git /work
+RUN git clone https://github.com/NewYorkCoin-NYC/nycoin.git /work
 RUN cd /work && \
     git checkout v1.3 && \
     chmod a+x autogen.sh && \
