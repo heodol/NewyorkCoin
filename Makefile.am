@@ -140,7 +140,7 @@ $(BITCOIND_BIN): FORCE
 	$(MAKE) -C src $(@F)
 
 $(BITCOIN_CLI_BIN): FORCE
-	$(MAKE) -C src $(@F) 
+	$(MAKE) -C src $(@F)
 
 if USE_LCOV
 
