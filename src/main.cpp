@@ -1,7 +1,8 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin Core developers
-// Copyright (c) 2014-2015 The newyorkcoin Core developers
+// Copyright (c) 2014-2015 The Dogecoin Core developers
 // Copyright (c) 2014-2015 Daniel Kraft
+// Copyright (c) 2018 The New York Coin Community developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -4032,12 +4033,14 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
             pfrom->cleanSubVer = SanitizeString(pfrom->strSubVer);
         }
 
+#ifndef ENABLE_PEERS
         if(strstr(pfrom->cleanSubVer.c_str(), "NewYorkCoin") == NULL)
         {
             LogPrintf("%s using version %i %s from other client; disconnecting\n", pfrom->addr.ToString().c_str(), pfrom->nVersion, pfrom->cleanSubVer.c_str());
             pfrom->fDisconnect = true;
             return false;
         }
+#endif
 
         if (!vRecv.empty())
             vRecv >> pfrom->nStartingHeight;
