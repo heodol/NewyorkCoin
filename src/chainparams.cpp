@@ -1,6 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin Core developers
-// Copyright (c) 2015 The newyorkcoin Core developers
+// Copyright (c) 2015 The Dogecoin Core developers
 // Copyright (c) 2018 The New York Coin Community developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -37,7 +37,7 @@ public:
     CMainParams() {
         strNetworkID = "main";
 
-        // Blocks 0 - 4499999 are conventional difficulty calculation
+        // Blocks 0 - 4799999 are conventional difficulty calculation
         consensus.nSubsidyHalvingInterval = 500000;
         consensus.nMajorityEnforceBlockUpgrade = 1500;
         consensus.nMajorityRejectBlockOutdated = 1900;
@@ -56,7 +56,7 @@ public:
         consensus.fDigishieldDifficultyCalculation = false;
         consensus.nCoinbaseMaturity = 30;
 
-        // Blocks 4500000 are Digishield with AuxPoW
+        // Blocks 4800000 are Digishield with AuxPoW
         digishieldConsensus = consensus;
         digishieldConsensus.nHeightEffective = 4800000;
         digishieldConsensus.fAllowLegacyBlocks = false;
@@ -65,7 +65,7 @@ public:
         digishieldConsensus.nPowTargetTimespan = 60; // post-digishield: 60 seconds
         digishieldConsensus.nCoinbaseMaturity = 240;
 
-        // Blocks 4500000+ are AuxPoW
+        // Blocks 4800000+ are AuxPoW
         auxpowConsensus = digishieldConsensus;
         auxpowConsensus.nHeightEffective = 4800000;
         auxpowConsensus.fAllowLegacyBlocks = false;

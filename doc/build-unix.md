@@ -230,3 +230,13 @@ In this case there is no dependency on Berkeley DB 4.8.
 
 Mining is also possible in disable-wallet mode, but only using the `getblocktemplate` RPC
 call, not `getwork`.
+
+Enable Peers mode
+-----------------
+By default the node will shun peers with protocol subversion strings that do not include
+"NewYorkCoin". This may make it harder to connect other (mining stratum) peers without
+modifications. To disable peer subversion discrimination compile with:
+
+    ./configure --enable-peers
+
+Keep in mind the protocol version is still used to discriminate between peers.
