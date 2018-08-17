@@ -116,3 +116,5 @@ Other commands:
     ./newyorkcoind -daemon # to start the newyorkcoin daemon.
     ./newyorkcoin-cli --help  # for a list of command-line options.
     ./newyorkcoin-cli help    # When the daemon is running, to get a list of RPC commands
+
+See build-unix.md for more options.
