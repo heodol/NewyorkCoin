@@ -122,16 +122,7 @@ public:
 
     CBlockVersion& operator=(const int nBaseVersion)
     {
-        if (nBaseVersion ==1)
-        {
-            nVersion = nBaseVersion;
-        }
-        else
-        {
-            nVersion = (nBaseVersion & 0x000000ff) | (nVersion & 0xffffff00);
-        }
-        
-
+        nVersion = (nBaseVersion & 0x000000ff) | (nVersion & 0xffffff00);
         return *this;
     }
 
