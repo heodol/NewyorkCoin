@@ -2782,8 +2782,7 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
 
     // Check proof of work
     // Legacy
-    if (consensusParams.fAllowLegacyBlocks
-        && block.nVersion.IsLegacy())
+    if (consensusParams.fAllowLegacyBlocks)
         {
             if((unsigned int)block.nBits != GetNextWorkRequiredLegacy(pindexPrev, &block, consensusParams))
               return state.DoS(100, error("%s: incorrect proof of work at Legacy height %d", __func__, nHeight),
