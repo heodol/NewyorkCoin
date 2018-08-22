@@ -353,7 +353,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)
         // Fill in header
         pblock->hashPrevBlock  = pindexPrev->GetBlockHash();
         UpdateTime(pblock, consensus, pindexPrev);
-        if(pblock->nVersion.GetLegacyBlockVersion() == 1)
+        if(consensusParams.fAllowLegacyBlocks)
           pblock->nBits          = GetNextWorkRequiredLegacy(pindexPrev, pblock, consensus);
         else
           pblock->nBits          = GetNextWorkRequired(pindexPrev, pblock, consensus);

@@ -121,7 +121,7 @@ public:
 
     inline int32_t GetLegacyBlockVersion()
     {
-        return nVersion;
+        return 1;
     }
 
     CBlockVersion& operator=(const CBlockVersion& other)
