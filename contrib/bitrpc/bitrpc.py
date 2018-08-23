@@ -11,9 +11,9 @@ rpcpass = ""
 
 
 if rpcpass == "":
-    access = ServiceProxy("http://127.0.0.1:22555")
+    access = ServiceProxy("http://127.0.0.1:18332")
 else:
-    access = ServiceProxy("http://"+rpcuser+":"+rpcpass+"@127.0.0.1:22555")
+    access = ServiceProxy("http://"+rpcuser+":"+rpcpass+"@127.0.0.1:18332")
 cmd = sys.argv[1].lower()
 
 if cmd == "backupwallet":
