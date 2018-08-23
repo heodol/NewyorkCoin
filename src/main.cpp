@@ -2782,8 +2782,7 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
 
     // Check proof of work
     // Legacy
-    if (consensusParams.fAllowLegacyBlocks
-        && block.nVersion.IsLegacy())
+    if (consensusParams.fAllowLegacyBlocks)
         {
             if((unsigned int)block.nBits != GetNextWorkRequiredLegacy(pindexPrev, &block, consensusParams))
               return state.DoS(100, error("%s: incorrect proof of work at Legacy height %d", __func__, nHeight),
@@ -4034,7 +4033,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         }
 
 #ifndef ENABLE_PEERS
-        if(strstr(pfrom->cleanSubVer.c_str(), "NewYorkCoin") == NULL)
+        if(pfrom->cleanSubVer != "/Satoshi:1.0.0.1/" && pfrom->cleanSubVer != "/Satoshi:1.0.1.1/" && strstr(pfrom->cleanSubVer.c_str(), "NewYorkCoin") == NULL)
         {
             LogPrintf("%s using version %i %s from other client; disconnecting\n", pfrom->addr.ToString().c_str(), pfrom->nVersion, pfrom->cleanSubVer.c_str());
             pfrom->fDisconnect = true;
@@ -4713,7 +4712,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
                 // This isn't a Misbehaving(100) (immediate ban) because the
                 // peer might be an older or different implementation with
                 // a different signature key, etc.
-                Misbehaving(pfrom->GetId(), 10);
+                //Misbehaving(pfrom->GetId(), 10);
             }
         }
     }
