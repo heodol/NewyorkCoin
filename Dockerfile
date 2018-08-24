@@ -53,7 +53,7 @@ WORKDIR /work
 # Install configuration
 #
 
-RUN mkdir -p /root/.newyorkcoin
+RUN mkdir -p /root/.newyorkc
 
 # ===============================================================================
 # System Initialization
@@ -62,13 +62,12 @@ RUN mkdir -p /root/.newyorkcoin
 ## Copy folders
 RUN git clone https://github.com/NewYorkCoin-NYC/nycoin.git /work
 RUN cd /work && \
-    git checkout v1.3 && \
     chmod a+x autogen.sh && \
     ./autogen.sh && \
     ./configure && \
     /usr/bin/make
 
 # Set default CMD
-CMD /work/src/newyorkcoind && tail -f -n 10 /root/.newyorkcoin/debug.log
+CMD /work/src/newyorkcoind && tail -f -n 10 /root/.newyorkc/debug.log
 
-EXPOSE 17020 27020 18823 2882
+EXPOSE 17020 27020 18823 28823
