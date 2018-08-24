@@ -50,6 +50,7 @@ unsigned int KimotoGravityWell(const CBlockIndex* pindexLast, const CBlockHeader
 	  unsigned int bnProofOfWorkLimit = UintToArith256(params.powLimit).GetCompact();
     CBigNum bnPowLimit(UintToArith256(params.powLimit));
 
+
   	if (BlockLastSolved == NULL || BlockLastSolved->nHeight == 0 || (uint64_t)BlockLastSolved->nHeight < PastBlocksMin) { return UintToArith256(params.powLimit).GetCompact(); }
 
   	for (unsigned int i = 1; BlockReading && BlockReading->nHeight > 0; i++) {
