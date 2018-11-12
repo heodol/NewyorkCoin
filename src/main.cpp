@@ -2696,6 +2696,20 @@ bool CheckBlockHeader(const CBlockHeader& block, CValidationState& state, bool f
 
 bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bool fCheckMerkleRoot)
 {
+    // Shortcut checks for almost all early blocks
+    if(chainActive.Height() < SKIP_VALIDATION_HEIGHT)
+    {
+        const CChainParams& chainParams = Params();
+        // hit all the checkpoints but skip most of the rest
+        std::map<int, uint256>::iterator cpItr = chainParams.checkpoints().MapCheckpoints.find(block.GetHeight());
+
+        // if the current block is not found in the checkpoints list, skip it
+        if(cpItr == chainParams.checkpoints().MapCheckpoints.end())
+        {
+            return true;
+        }
+    }
+
     // These are checks that are independent of context.
 
     // Check that the header is valid (particularly PoW).  This is mostly
@@ -2872,22 +2886,29 @@ bool AcceptBlockHeader(const CBlockHeader& block, CValidationState& state, CBloc
         return true;
     }
 
-    if (!CheckBlockHeader(block, state))
-        return false;
+    // Since we're close to chaintip, reenable checks to ensure state is correct when sync completes
+    if(chainActive.Height() >= SKIP_VALIDATION_HEIGHT)
+    {
+      if (!CheckBlockHeader(block, state))
+          return false;
 
-    // Get prev block index
-    CBlockIndex* pindexPrev = NULL;
-    if (hash != chainparams.GetConsensus(0).hashGenesisBlock) {
-        BlockMap::iterator mi = mapBlockIndex.find(block.hashPrevBlock);
-        if (mi == mapBlockIndex.end())
-            return state.DoS(10, error("%s: prev block not found", __func__), 0, "bad-prevblk");
-        pindexPrev = (*mi).second;
-        if (pindexPrev->nStatus & BLOCK_FAILED_MASK)
-            return state.DoS(100, error("%s: prev block invalid", __func__), REJECT_INVALID, "bad-prevblk");
+          // Get prev block index
+          CBlockIndex* pindexPrev = NULL;
+          if (hash != chainparams.GetConsensus(0).hashGenesisBlock) {
+              BlockMap::iterator mi = mapBlockIndex.find(block.hashPrevBlock);
+              if (mi == mapBlockIndex.end())
+                  return state.DoS(10, error("%s: prev block not found", __func__), 0, "bad-prevblk");
+              pindexPrev = (*mi).second;
+              if (pindexPrev->nStatus & BLOCK_FAILED_MASK)
+                  return state.DoS(100, error("%s: prev block invalid", __func__), REJECT_INVALID, "bad-prevblk");
+          }
+
+          if (!ContextualCheckBlockHeader(block, state, pindexPrev))
+              return false;
     }
 
-    if (!ContextualCheckBlockHeader(block, state, pindexPrev))
-        return false;
+
+
 
     if (pindex == NULL)
         pindex = AddToBlockIndex(block);
