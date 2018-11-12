@@ -2699,9 +2699,9 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
     // Shortcut checks for almost all early blocks
     if(chainActive.Height() < SKIP_VALIDATION_HEIGHT)
     {
-        const CChainParams& chainParams = Params();
+        CChainParams& chainParams = Params();
         // hit all the checkpoints but skip most of the rest
-        const std::map<int, uint256>::iterator cpItr = chainParams.Checkpoints().mapCheckpoints.find(chainActive.Height());
+        std::map<int, uint256>::iterator cpItr = chainParams.Checkpoints().mapCheckpoints.find(chainActive.Height());
 
         // if the current block is not found in the checkpoints list, skip it
         if(cpItr == chainParams.Checkpoints().mapCheckpoints.end())
