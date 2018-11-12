@@ -2701,10 +2701,10 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
     {
         const CChainParams& chainParams = Params();
         // hit all the checkpoints but skip most of the rest
-        std::map<int, uint256>::iterator cpItr = chainParams.Checkpoints().MapCheckpoints.find(block.GetHeight());
+        std::map<int, uint256>::iterator cpItr = chainParams.Checkpoints().mapCheckpoints.find(block.GetHeight());
 
         // if the current block is not found in the checkpoints list, skip it
-        if(cpItr == chainParams.Checkpoints().MapCheckpoints.end())
+        if(cpItr == chainParams.Checkpoints().mapCheckpoints.end())
         {
             return true;
         }
