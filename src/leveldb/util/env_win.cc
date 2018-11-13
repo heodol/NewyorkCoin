@@ -439,7 +439,7 @@ Win32WritableFile::Win32WritableFile(const std::string& fname) : filename_(fname
     // CreateFileW returns INVALID_HANDLE_VALUE in case of error, always check isEnable() before use
 }
 
-Win32WritableFile::~Win32WriteableFile()
+Win32WritableFile::~Win32WritableFile()
 {
     if(_hFile != INVALID_HANDLE_VALUE)
     {
