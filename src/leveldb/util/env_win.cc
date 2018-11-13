@@ -840,8 +840,7 @@ Status Win32Env::NewWritableFile( const std::string& fname, WritableFile** resul
 {
     Status sRet;
     std::string path = fname;
-    Win32WritableFile* pFile = new     Win32WritableFile* pFile = new Win32MapFile(ModifyPath(path));
-(ModifyPath(path));
+    Win32WritableFile* pFile = new Win32WritableFile(ModifyPath(path));
     if(!pFile->isEnable()){
         *result = NULL;
         sRet = Status::IOError(fname,Win32::GetLastErrSz());
