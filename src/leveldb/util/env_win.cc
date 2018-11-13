@@ -452,7 +452,7 @@ Status Win32WritableFile::Append(const Slice& data)
     {
       return Status::IOError("Win32WritableFile.Append::WriteFile:" +filename_, Win32::GetLastErrSz());
     }
-    return Status::OK());
+    return Status::OK();
 }
 
 Status Win32WritableFile::Close()
@@ -475,7 +475,7 @@ Status Win32WritableFile::Sync()
 {
     if(!FlushFileBuffers(_hFile))
     {
-        return Status::IOEroor("Win32WritableFile.Sync::FlushFilebuffers:"+filename_, Win32::GetLastErrSz());
+        return Status::IOError("Win32WritableFile.Sync::FlushFilebuffers:"+filename_, Win32::GetLastErrSz());
     }
     return Status::OK();
 }
