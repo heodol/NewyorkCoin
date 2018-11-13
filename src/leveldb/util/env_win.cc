@@ -116,7 +116,7 @@ public:
     BOOL isEnable();
 private:
     std::string filename_;
-    HANDLE _hFile;
+    ::HANDLE _hFile;
 
 };
 
@@ -442,7 +442,9 @@ Win32WritableFile::Win32WritableFile(const std::string& fname) : filename_(fname
 Win32WritableFile::~Win32WriteableFile()
 {
     if(_hFile != INVALID_HANDLE_VALUE)
+    {
       Close();
+    }
 }
 
 Status Win32WritableFile::Append(const Slice& data)
