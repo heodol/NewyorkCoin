@@ -737,7 +737,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
             LogPrintf("%s: parameter interaction: -salvagewallet=1 -> setting -rescan=1\n", __func__);
     }
 
-    if (GetBoolArg("-fastsync", true))
+    if (GetBoolArg("-fastsync", false))
     {
         LogPrintf("%s: parameter interaction: -fastsync=1 increasing max blocks in flight and minimizing block checks\n", __func__);
     }

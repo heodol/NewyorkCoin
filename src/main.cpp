@@ -4249,7 +4249,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
             return error("message inv size() = %u", vInv.size());
         }
 
-        if(GetBoolArg("-fastsync"), true)
+        if(GetBoolArg("-fastsync", false))
         {
           nAllowedBlocksInTransit = MAX_BLOCKS_IN_TRANSIT_PER_PEER;
           LogPrint("net", "fastsync activated maximum number of blocks in transit increased");
@@ -5171,7 +5171,7 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
         //
         // Message: getdata (blocks)
         //
-        if(GetBoolArg("-fastsync"), true)
+        if(GetBoolArg("-fastsync", false))
         {
           nAllowedBlocksInTransit = MAX_BLOCKS_IN_TRANSIT_PER_PEER;
           LogPrint("net", "fastsync activated maximum number of blocks in transit increased");
