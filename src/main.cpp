@@ -2699,7 +2699,7 @@ bool CheckBlockHeader(const CBlockHeader& block, CValidationState& state, bool f
 bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bool fCheckMerkleRoot)
 {
     // Shortcut checks for almost all early blocks
-    if(chainActive.Height() < SKIP_VALIDATION_HEIGHT || GetBoolArg("-fastsync", false))
+    if(chainActive.Height() < SKIP_VALIDATION_HEIGHT && GetBoolArg("-fastsync", false))
     {
         const CChainParams& chainParams = Params();
         // hit all the checkpoints but skip most of the rest
@@ -2889,7 +2889,8 @@ bool AcceptBlockHeader(const CBlockHeader& block, CValidationState& state, CBloc
     }
 
     // Since we're close to chaintip, reenable checks to ensure state is correct when sync completes
-    if(chainActive.Height() >= SKIP_VALIDATION_HEIGHT || GetBoolArg("-fastsync", false))
+    // Also reenable checks if -fastsync is not set
+    if(chainActive.Height() >= SKIP_VALIDATION_HEIGHT || (GetBoolArg("-fastsync", false) == false))
     {
       if (!CheckBlockHeader(block, state))
           return false;

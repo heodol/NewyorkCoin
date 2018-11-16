@@ -322,7 +322,7 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-seednode=<ip>", _("Connect to a node to retrieve peer addresses, and disconnect"));
     strUsage += HelpMessageOpt("-timeout=<n>", strprintf(_("Specify connection timeout in milliseconds (minimum: 1, default: %d)"), DEFAULT_CONNECT_TIMEOUT));
     strUsage += HelpMessageOpt("-bloomfilters", _("Allow peers to set bloom filters (default: 1)"));
-    strUsage += HelpMessageOpt("-fastsync", _("Increases maximum number of blocks to download at any given time and only minimal validates blocks"));
+    strUsage += HelpMessageOpt("-fastsync", _("Increases maximum number of in-flight blocks and only perform minimal block validation"));
 #ifdef USE_UPNP
 #if USE_UPNP
     strUsage += HelpMessageOpt("-upnp", _("Use UPnP to map the listening port (default: 1 when listening)"));
