@@ -40,9 +40,9 @@ This will build the newyorkcoin daemon insite a container tagged with a number. 
 Run docker with the config provided in either docker/mainnet of docker/testnet. Feel free to modifiy the files or create a new on in a different path
 
 * Mainnet:
-`docker run -d -v $(pwd)/docker/mainnet:/root/.newyorkcoin/ newyorkcoin-pow:0.1`
+`docker run --name newyorkcoin -d -v $(pwd)/docker/mainnet:/root/.newyorkc/ newyorkcoin-pow:0.1`
 
 * Testnet:
-`docker run -d -v $(pwd)/docker/testnet:/root/.newyorkcoin/ newyorkcoin-pow:0.1`
+`docker run --name newyorkcoin-testnet -d -v $(pwd)/docker/testnet:/root/.newyorkc/ newyorkcoin-pow:0.1`
 
 With: `-v`: persist the data in your host machine.
