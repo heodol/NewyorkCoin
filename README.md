@@ -28,7 +28,8 @@ Bounty 3. Configure and launch a NewYorkCoin mining pool on behalf of the NewYor
 
 Bounty 4. Find and report any bug or exploit that you can find in the NewYorkCoin code to contact@nycoin.community. Bug/exploit must be verified by the NewYorkCoin development team prior to payment for completion of the bounty.
 
-Please direct all correspondence in regards to these development bounties to contact@nycoin.community. Thank you!
+Please direct all correspondence in regards to these development bounties to contact@nycoin.community or join our discord https://discord.gg/DhgxUqJ. Thank you!
+
 
 ## License
 NewYorkCoin is released under the terms of the MIT license. See [COPYING](COPYING)
