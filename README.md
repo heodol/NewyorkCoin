@@ -24,7 +24,7 @@ Bounty 1. Upgrade the NYC codebase to include the Segregated Witness Protocol, s
 
 Bounty 2. Develop a working Android/iOS mobile NYC wallet, with inventory management and point of sale capabilities, similar to Square. App must be reviewed by the NewYorkCoin development team prior to payment for completion of the bounty.
 
-Bounty 3. Configure and launch a NewYorkCoin mining pool on behalf of the NewYorkCoin community. Pool operation must be verified by the NewYorkCoin development team prior to payment for completion of the bounty.
+Bounty 3. Configure and launch a NewYorkCoin mining pool supporting a basket of scrypt algorithm merge-mined blockchains on behalf of the NewYorkCoin community. Pool operation must be verified by the NewYorkCoin development team prior to payment for completion of the bounty.
 
 Bounty 4. Find and report any bug or exploit that you can find in the NewYorkCoin code to contact@nycoin.community. Bug/exploit must be verified by the NewYorkCoin development team prior to payment for completion of the bounty.
 
