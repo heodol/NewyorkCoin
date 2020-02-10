@@ -1,7 +1,7 @@
 # NewYorkCoin [NYCoin, NYC]
 ==========================
 
-![NewYorkCoin](https://nycoin.community/img/logo.png)
+![NewYorkCoin](https://nycoin.community/images/logo-inverse-210x76.png)
 
 
 
