@@ -39,7 +39,7 @@ for more information or see http://opensource.org/licenses/MIT.
 Development is ongoing, and the development team, as well as other volunteers, can freely work in their own github branch and submit pull requests when features or bug fixes are ready.
 
 ## Alerts
-The crypto community is filled with scams and individuals seeking to take advantage - sadly the NewYorkCoin project is not immune and it has come to our attention that a copy cat website is being used to spread disinformation and drive traffic to Yobit - an exchange that is known to be trading NewYorkCoin with insufficient reserves due to a 51% attack and has locked withdrawals since the attack with the exception of a short ~1 week period.
+The crypto community is filled with scams and individuals seeking to take advantage - sadly the NewYorkCoin project is not immune and it has come to our attention that a copy cat website is being used to spread disinformation and drive traffic to Yobit - an exchange that is known to be trading NewYorkCoin with insufficient reserves due to a 51% attack and has locked withdrawals since the attack (with the exception of a short ~1 week period).
 
 The fraudulent site is NewYorkCoin.net.
 The fraudster also uses the twitter handle @NewYorkCoinNYC and goes by several aliases incuding nycminer, scryptenthusiast as well as hivewalletmind.
