@@ -13,7 +13,7 @@ http://nycoin.community/
 
 Development Bounties:
 
-* Bounty 1. Update NYC source code to introduce: SegWit, support for Atomic Swaps, and support for Lightning Network - 200m NYC (bounty submission recieved - https://github.com/NewYorkCoin-NYC/nycoin-2.0/commit/61b54d4a8ea62d6c1a4372d35e9904d024f7f724 )
+* Bounty 1. Update NYC source code to introduce: SegWit, support for Atomic Swaps, and support for Lightning Network - 200m NYC ( bounty submission recieved - https://github.com/NewYorkCoin-NYC/nycoin-2.0/commit/61b54d4a8ea62d6c1a4372d35e9904d024f7f724 )
 * Bounty 2. Develop proprietary merchant integration solution - 125m NYC
 * Bounty 3. Creation of community hosted mining pool - 125m NYC
 * Bounty 4. Bug Bounty: 75m NYC
