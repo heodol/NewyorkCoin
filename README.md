@@ -14,9 +14,8 @@ http://nycoin.community/
 Development Bounties:
 
 * Bounty 1. Update NYC source code to introduce: SegWit, support for Atomic Swaps, and support for Lightning Network - 200m NYC ( bounty submission accepted - https://github.com/NewYorkCoin-NYC/nycoin-2.0/commit/61b54d4a8ea62d6c1a4372d35e9904d024f7f724 - funds dispersal is in progress)
-* Bounty 2. Develop proprietary merchant integration solution - 125m NYC
-* Bounty 3. Creation of community hosted mining pool - 125m NYC
-* Bounty 4. Bug Bounty: 75m NYC
+* Bounty 2. Develop proprietary merchant integration solution - 250m NYC
+* Bounty 3. Bug Bounty: 75m NYC
 
 Requirements:
 
@@ -24,9 +23,7 @@ Bounty 1. Upgrade the NYC codebase to include the Segregated Witness Protocol, s
 
 Bounty 2. Develop a working Android/iOS mobile NYC wallet, with inventory management and point of sale capabilities, similar to Square. App must be reviewed by the NewYorkCoin development team prior to payment for completion of the bounty.
 
-Bounty 3. Configure and launch a NewYorkCoin mining pool supporting a basket of scrypt algorithm merge-mined blockchains on behalf of the NewYorkCoin community. Pool operation must be verified by the NewYorkCoin development team prior to payment for completion of the bounty.
-
-Bounty 4. Find and report any bug or exploit that you can find in the NewYorkCoin code to contact@nycoin.community. Bug/exploit must be verified by the NewYorkCoin development team prior to payment for completion of the bounty.
+Bounty 3. Find and report any bug or exploit that you can find in the NewYorkCoin code to contact@nycoin.community. Bug/exploit must be verified by the NewYorkCoin development team prior to payment for completion of the bounty.
 
 Please direct all correspondence in regards to these development bounties to contact@nycoin.community or join our discord https://discord.gg/DhgxUqJ. Thank you!
 
