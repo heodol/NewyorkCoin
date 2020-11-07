@@ -6,7 +6,7 @@
 ## What is NewYorkCoin?
 NewYorkCoin is a cryptocurrency like Bitcoin, that uses Scrypt as its proof of work (POW). Taking development cues from Dogecoin and Litecoin, NewYorkCoin is built as a cryptocurrency solution for frictionless global value transmission
 
-http://newyorkcoin.net/
+https://newyorkcoin.net/
 
 ## License
 NewYorkCoin is released under the terms of the MIT license. See [COPYING](COPYING)
