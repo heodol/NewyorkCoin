@@ -1,7 +1,7 @@
 # NewYorkCoin [NYCoin, NYC]
 ==========================
 
-![NewYorkCoin](https:///www.newyorkcoin.net/img/nyc_logo_wallet_2018.png)
+![NewYorkCoin](https://www.newyorkcoin.net/img/nyc_logo_wallet_2018.png)
 
 ## What is NewYorkCoin?
 NewYorkCoin is a cryptocurrency like Bitcoin, that uses Scrypt as its proof of work (POW). Taking development cues from Dogecoin and Litecoin, NewYorkCoin is built as a cryptocurrency solution for frictionless global value transmission
