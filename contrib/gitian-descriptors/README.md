@@ -20,7 +20,7 @@ Sanity checks:
 
 Once you've got the right hardware and software:
 
-    git clone git://github.com/newyorkcoin/newyorkcoin.git
+    git clone git://github.com/NewYorkCoinNYC/nycoin.git
     git clone git://github.com/devrandom/gitian-builder.git
     mkdir gitian-builder/inputs
     cd gitian-builder/inputs

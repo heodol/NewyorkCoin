@@ -18,4 +18,3 @@ the .desktop file or copy or symlink your newyorkcoin-qt binary to `/usr/bin`
 and the `../../share/pixmaps/bitcoin128.png` to `/usr/share/pixmaps`
 
 newyorkcoin-qt.protocol (KDE)
-

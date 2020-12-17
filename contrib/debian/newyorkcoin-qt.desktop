@@ -1,7 +1,8 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=NewYorkCoin
-Comment=NewYorkCoin P2P Cryptocurrency
+Name=NewYorkCoin Core
+Comment=Connect to the NewYorkCoin P2P Network
+Comment[de]=Verbinde mit dem NewYorkCoin peer-to-peer Netzwerk
 Comment[fr]=NewYorkCoin, monnaie virtuelle cryptographique pair à pair
 Comment[tr]=NewYorkCoin, eşten eşe kriptografik sanal para birimi
 Exec=newyorkcoin-qt %u

@@ -1,14 +1,16 @@
 //
 // Simple NewYorkCoin Payment Protocol messages
-// Derived fromthe Bitcoin Payment Protocol
+// Derived from the Bitcoin Payment Protocol
 //
 // Use fields 100+ for extensions;
 // to avoid conflicts, register extensions via pull-req at:
-// https://github.com/newyorkcoin/dips
+// https://github.com/NewYorkCoinnyc/dips
 //
 
+syntax = "proto2";
+
 package payments;
-option java_package = "com.newyorkcoin.protocols.payments";
+option java_package = "net.newyorkcoin.protocols.payments";
 option java_outer_classname = "Protos";
 
 // Generalized form of "send payment to this/these newyorkcoin addresses"

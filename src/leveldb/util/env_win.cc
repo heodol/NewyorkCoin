@@ -1,7 +1,7 @@
 // This file contains source that originates from:
 // http://code.google.com/p/leveldbwin/source/browse/trunk/win32_impl_src/env_win32.h
 // http://code.google.com/p/leveldbwin/source/browse/trunk/win32_impl_src/port_win32.cc
-// Those files dont' have any explict license headers but the
+// Those files dont' have any explict license headers but the 
 // project (http://code.google.com/p/leveldbwin/) lists the 'New BSD License'
 // as the license.
 #if defined(LEVELDB_PLATFORM_WINDOWS)
@@ -106,9 +106,9 @@ private:
 class Win32WritableFile : public WritableFile
 {
 public:
-    Win32WritableFile(const std::string& fname);
-
+    Win32WritableFile(const std::string& fname, bool append);
     ~Win32WritableFile();
+
     virtual Status Append(const Slice& data);
     virtual Status Close();
     virtual Status Flush();
@@ -117,7 +117,6 @@ public:
 private:
     std::string filename_;
     ::HANDLE _hFile;
-
 };
 
 class Win32FileLock : public FileLock
@@ -137,7 +136,7 @@ private:
 
 class Win32Logger : public Logger
 {
-public:
+public: 
     friend class Win32Env;
     virtual ~Win32Logger();
     virtual void Logv(const char* format, va_list ap);
@@ -158,6 +157,8 @@ public:
     virtual Status NewRandomAccessFile(const std::string& fname,
         RandomAccessFile** result);
     virtual Status NewWritableFile(const std::string& fname,
+        WritableFile** result);
+    virtual Status NewAppendableFile(const std::string& fname,
         WritableFile** result);
 
     virtual bool FileExists(const std::string& fname);
@@ -247,19 +248,19 @@ std::wstring& ModifyPath(std::wstring& path)
 std::string GetLastErrSz()
 {
     LPWSTR lpMsgBuf;
-    FormatMessageW(
-        FORMAT_MESSAGE_ALLOCATE_BUFFER |
-        FORMAT_MESSAGE_FROM_SYSTEM |
+    FormatMessageW( 
+        FORMAT_MESSAGE_ALLOCATE_BUFFER | 
+        FORMAT_MESSAGE_FROM_SYSTEM | 
         FORMAT_MESSAGE_IGNORE_INSERTS,
         NULL,
         GetLastError(),
         0, // Default language
         (LPWSTR) &lpMsgBuf,
         0,
-        NULL
+        NULL 
         );
     std::string Err;
-	ToNarrowPath(lpMsgBuf, Err);
+	ToNarrowPath(lpMsgBuf, Err); 
     LocalFree( lpMsgBuf );
     return Err;
 }
@@ -267,16 +268,16 @@ std::string GetLastErrSz()
 std::wstring GetLastErrSzW()
 {
     LPVOID lpMsgBuf;
-    FormatMessageW(
-        FORMAT_MESSAGE_ALLOCATE_BUFFER |
-        FORMAT_MESSAGE_FROM_SYSTEM |
+    FormatMessageW( 
+        FORMAT_MESSAGE_ALLOCATE_BUFFER | 
+        FORMAT_MESSAGE_FROM_SYSTEM | 
         FORMAT_MESSAGE_IGNORE_INSERTS,
         NULL,
         GetLastError(),
         0, // Default language
         (LPWSTR) &lpMsgBuf,
         0,
-        NULL
+        NULL 
         );
     std::wstring Err = (LPCWSTR)lpMsgBuf;
     LocalFree(lpMsgBuf);
@@ -424,16 +425,23 @@ void Win32RandomAccessFile::_CleanUp()
     }
 }
 
-Win32WritableFile::Win32WritableFile(const std::string& fname) : filename_(fname)
+Win32WritableFile::Win32WritableFile(const std::string& fname, bool append)
+    : filename_(fname)
 {
-  std::wstring path;
-  ToWidePath(fname, path);
-  DWORD Flag = PathFileExistsW(path.c_str()) ? OPEN_EXISTING : CREATE_ALWAYS;
+    std::wstring path;
+    ToWidePath(fname, path);
+    // NewAppendableFile: append to an existing file, or create a new one
+    //     if none exists - this is OPEN_ALWAYS behavior, with
+    //     FILE_APPEND_DATA to avoid having to manually position the file
+    //     pointer at the end of the file.
+    // NewWritableFile: create a new file, delete if it exists - this is
+    //     CREATE_ALWAYS behavior. This file is used for writing only so
+    //     use GENERIC_WRITE.
     _hFile = CreateFileW(path.c_str(),
-                         GENERIC_READ | GENERIC_WRITE,
+                         append ? FILE_APPEND_DATA : GENERIC_WRITE,
                          FILE_SHARE_READ|FILE_SHARE_DELETE|FILE_SHARE_WRITE,
                          NULL,
-                         Flag,
+                         append ? OPEN_ALWAYS : CREATE_ALWAYS,
                          FILE_ATTRIBUTE_NORMAL,
                          NULL);
     // CreateFileW returns INVALID_HANDLE_VALUE in case of error, always check isEnable() before use
@@ -441,43 +449,38 @@ Win32WritableFile::Win32WritableFile(const std::string& fname) : filename_(fname
 
 Win32WritableFile::~Win32WritableFile()
 {
-    if(_hFile != INVALID_HANDLE_VALUE)
-    {
-      Close();
-    }
+    if (_hFile != INVALID_HANDLE_VALUE)
+        Close();
 }
 
 Status Win32WritableFile::Append(const Slice& data)
 {
     DWORD r = 0;
-    if(!WriteFile(_hFile, data.data(), data.size(), &r, NULL) || r != data.size())
-    {
-      return Status::IOError("Win32WritableFile.Append::WriteFile:" +filename_, Win32::GetLastErrSz());
+    if (!WriteFile(_hFile, data.data(), data.size(), &r, NULL) || r != data.size()) {
+        return Status::IOError("Win32WritableFile.Append::WriteFile: "+filename_, Win32::GetLastErrSz());
     }
     return Status::OK();
 }
 
 Status Win32WritableFile::Close()
 {
-    if(!CloseHandle(_hFile))
-    {
-        return Status::IOError("Win32WritableFile.Close::CloseHandle:"+filename_, Win32::GetLastErrSz());
+    if (!CloseHandle(_hFile)) {
+        return Status::IOError("Win32WritableFile.Close::CloseHandle: "+filename_, Win32::GetLastErrSz());
     }
     _hFile = INVALID_HANDLE_VALUE;
     return Status::OK();
 }
 
-
 Status Win32WritableFile::Flush()
 {
+    // Nothing to do here, there are no application-side buffers
     return Status::OK();
 }
 
 Status Win32WritableFile::Sync()
 {
-    if(!FlushFileBuffers(_hFile))
-    {
-        return Status::IOError("Win32WritableFile.Sync::FlushFilebuffers:"+filename_, Win32::GetLastErrSz());
+    if (!FlushFileBuffers(_hFile)) {
+        return Status::IOError("Win32WritableFile.Sync::FlushFileBuffers "+filename_, Win32::GetLastErrSz());
     }
     return Status::OK();
 }
@@ -626,7 +629,7 @@ Status Win32Env::GetChildren(const std::string& dir, std::vector<std::string>* r
         BOOL hasNext = TRUE;
         std::string child;
         while(hasNext){
-            ToNarrowPath(wfd.cFileName, child);
+            ToNarrowPath(wfd.cFileName, child); 
             if(child != ".." && child != ".")  {
                 result->push_back(child);
             }
@@ -693,7 +696,7 @@ Status Win32Env::RenameFile( const std::string& src, const std::string& target )
                 sRet = Status::IOError(src, "Could not rename file.");
 			else if(!::MoveFileW(wsrc_path.c_str(),
                                  wtarget_path.c_str() ) )
-                sRet = Status::IOError(src, "Could not rename file.");
+                sRet = Status::IOError(src, "Could not rename file.");    
         }
     }
     return sRet;
@@ -828,7 +831,9 @@ Status Win32Env::NewLogger( const std::string& fname, Logger** result )
 {
     Status sRet;
     std::string path = fname;
-    Win32WritableFile* pMapFile = new Win32WritableFile(ModifyPath(path));
+    // Logs are opened with write semantics, not with append semantics
+    // (see PosixEnv::NewLogger)
+    Win32WritableFile* pMapFile = new Win32WritableFile(ModifyPath(path), false);
     if(!pMapFile->isEnable()){
         delete pMapFile;
         *result = NULL;
@@ -842,7 +847,20 @@ Status Win32Env::NewWritableFile( const std::string& fname, WritableFile** resul
 {
     Status sRet;
     std::string path = fname;
-    Win32WritableFile* pFile = new Win32WritableFile(ModifyPath(path));
+    Win32WritableFile* pFile = new Win32WritableFile(ModifyPath(path), false);
+    if(!pFile->isEnable()){
+        *result = NULL;
+        sRet = Status::IOError(fname,Win32::GetLastErrSz());
+    }else
+        *result = pFile;
+    return sRet;
+}
+
+Status Win32Env::NewAppendableFile( const std::string& fname, WritableFile** result )
+{
+    Status sRet;
+    std::string path = fname;
+    Win32WritableFile* pFile = new Win32WritableFile(ModifyPath(path), true);
     if(!pFile->isEnable()){
         *result = NULL;
         sRet = Status::IOError(fname,Win32::GetLastErrSz());

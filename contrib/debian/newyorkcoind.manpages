@@ -1,3 +1,2 @@
-debian/manpages/newyorkcoind.1
-debian/manpages/newyorkcoin.conf.5
-debian/manpages/newyorkcoin-cli.1
+doc/man/newyorkcoind.1
+doc/man/newyorkcoin-cli.1
