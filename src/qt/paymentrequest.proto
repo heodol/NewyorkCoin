@@ -4,7 +4,7 @@
 //
 // Use fields 100+ for extensions;
 // to avoid conflicts, register extensions via pull-req at:
-// https://github.com/NewYorkCoinnyc/dips
+// https://github.com/newyorkcoin/dips
 //
 
 syntax = "proto2";

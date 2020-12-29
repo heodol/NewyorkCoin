@@ -9,7 +9,7 @@ Group=newyorkcoin
 Type=forking
 PIDFile=/var/lib/newyorkcoind/newyorkcoind.pid
 ExecStart=/usr/bin/newyorkcoind -daemon -pid=/var/lib/newyorkcoind/newyorkcoind.pid \
--conf=/etc/newyorkcoin/newyorkcoin.conf -datadir=/var/lib/newyorkcoind -disablewallet
+-conf=/etc/newyorkc/newyorkcoin.conf -datadir=/var/lib/newyorkcoind -disablewallet
 
 Restart=always
 PrivateTmp=true

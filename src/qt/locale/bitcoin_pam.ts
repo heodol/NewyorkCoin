@@ -1,4 +1,4 @@
-newyorkcoin<TS language="pam" version="2.1">
+<TS language="pam" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>

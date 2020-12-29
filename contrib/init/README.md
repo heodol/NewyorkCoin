@@ -5,7 +5,7 @@ Upstart: newyorkcoind.conf
 OpenRC:  newyorkcoind.openrc
          newyorkcoind.openrcconf
 CentOS:  newyorkcoind.init
-OS X:    net.newyorkcoin.newyorkcoind.plist
+OS X:    org.newyorkcoin.newyorkcoind.plist
 
 have been made available to assist packagers in creating node packages here.
 
