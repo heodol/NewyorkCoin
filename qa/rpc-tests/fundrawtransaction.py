@@ -516,7 +516,7 @@ class RawTransactionsTest(BitcoinTestFramework):
 
         #fund a tx with ~20 small inputs
         inputs = []
-        # NewYorkCoin: TX size rounding gives us a fee of 4 DOGE
+        # NewYorkCoin: TX size rounding gives us a fee of 4 NYC
         outputs = {self.nodes[0].getnewaddress():15,self.nodes[0].getnewaddress():4}
         rawTx = self.nodes[1].createrawtransaction(inputs, outputs)
         fundedTx = self.nodes[1].fundrawtransaction(rawTx)
