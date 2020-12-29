@@ -90,10 +90,10 @@ BOOST_AUTO_TEST_CASE(subsidy_limit_test)
     }
 
     //test sum +- ~10billion
-    arith_uint256 upperlimit = arith_uint256("95e14ec776380000"); //108 billion doge
+    arith_uint256 upperlimit = arith_uint256("95e14ec776380000"); //108 billion nyc
     BOOST_CHECK(nSum <= upperlimit);
 
-    arith_uint256 lowerlimit = arith_uint256("7a1fe16027700000"); //88 billion doge
+    arith_uint256 lowerlimit = arith_uint256("7a1fe16027700000"); //88 billion nyc
     BOOST_CHECK(nSum >= lowerlimit);
 
     // Test reward at 600k+ is constant
