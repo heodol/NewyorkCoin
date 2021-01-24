@@ -125,9 +125,9 @@ public:
         vSeeds.push_back(CDNSSeedData("nycoin.money", "dnsseed.nycoin.money"));
         vSeeds.push_back(CDNSSeedData("nycoin.community", "dnsseed.nycoin.community"));
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,60);  // 0x1e
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,60);  // 0x3c
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,22);  // 0x16
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,188); // 0xbc
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,188); // 0xBC
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xb2)(0x1e).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xad)(0xe4).convert_to_container<std::vector<unsigned char> >();
 
