@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Newyorkcoin Core
+Comment=Connect to the Newyorkcoin P2P Network
+Comment[de]=Verbinde mit dem Newyorkcoin peer-to-peer Netzwerk
+Comment[fr]=Newyorkcoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Newyorkcoin, eşten eşe kriptografik sanal para birimi
+Exec=newyorkcoin-qt %u
+Terminal=false
+Type=Application
+Icon=newyorkcoin128
+MimeType=x-scheme-handler/newyorkcoin;
+Categories=Office;Finance;
