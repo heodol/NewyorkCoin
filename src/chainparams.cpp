@@ -157,8 +157,8 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
         digishieldConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         auxpowConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
-      //  assert(consensus.hashGenesisBlock == uint256S("0x5597f25c062a3038c7fd815fe46c67dedfcb3c839fbc8e01ed4044540d08fe48"));
-    //    assert(genesis.hashMerkleRoot == uint256S("0x2bad42ac6e0ccc4808d8df0fd50ac8634eea335b1412b1ef52864b430a87b262"));
+        assert(consensus.hashGenesisBlock == uint256S("0x5597f25c062a3038c7fd815fe46c67dedfcb3c839fbc8e01ed4044540d08fe48"));
+       assert(genesis.hashMerkleRoot == uint256S("0x2bad42ac6e0ccc4808d8df0fd50ac8634eea335b1412b1ef52864b430a87b262"));
 
         // Note that of those with the service bits flag, most only support a subset of possible options
         vSeeds.push_back(CDNSSeedData("nycoin.money", "dnsseed.nycoin.money"));
@@ -216,6 +216,13 @@ static CMainParams mainParams;
 /**
  * Testnet (v3)
  */
+static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
+{
+    const char* pszTimestamp = "A Coin for New York City/test";
+    const CScript genesisOutputScript = CScript() << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f") << OP_CHECKSIG;
+    return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
+}
+
 class CTestNetParams : public CChainParams {
 private:
     Consensus::Params digishieldConsensus;
@@ -305,17 +312,17 @@ public:
         pchMessageStart[1] = 0xb1;
         pchMessageStart[2] = 0xc5;
         pchMessageStart[3] = 0xdc;
-        vAlertPubKey = ParseHex("04302390343f91cc401d56d68b123028bf52e5fca1939df127f63c6467cdf9c8e2c14b61104cf817d0b780da337893ecc4aaff1309e536162dabbdb45200ca2b0a");
+        vAlertPubKey = ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f");
         nDefaultPort = 27020;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1394101189, 1556996, 0x1e0ffff0, 1, 88 * COIN);
+        genesis = CreateGenesisBlock(1615864165, 63017, 0x1e0ffff0, 1, 88 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         digishieldConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         minDifficultyConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         auxpowConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
-  //      assert(consensus.hashGenesisBlock == uint256S("0x24463e4d3c625b0a9059f309044c2cf0d7e196cf2a6ecce901f24f681be33c8f"));
-        // assert(genesis.hashMerkleRoot == uint256S("0x5b2a3f53f605d62c53e62932dac6925e3d74afa5a4b459745c36d42d0ed26a69"));
+        assert(consensus.hashGenesisBlock == uint256S("0xe2b35c6408096243604d54d8da0d34aff5758ca9a732c329c4eb89b9104b8a4f"));
+         assert(genesis.hashMerkleRoot == uint256S("0xeabd0d41a90c86c1ee77e51da166a701af3a158ada232c2a7143d47a2e541d92"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -338,13 +345,13 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            ( 0, uint256S("0x00"))
+            ( 0, uint256S("0xe2b35c6408096243604d54d8da0d34aff5758ca9a732c329c4eb89b9104b8a4f"))
         };
 
         chainTxData = ChainTxData{
             // Data as of block a2179767a87ee4e95944703976fee63578ec04fa3ac2fc1c9c2c83587d096977 (height 1202214)
-            1440601451, // * UNIX timestamp of last checkpoint block
-            1119061,    // * total number of transactions between genesis and last checkpoint
+            1615864165, // * UNIX timestamp of last checkpoint block
+       0    ,    // * total number of transactions between genesis and last checkpoint
             1000  // * estimated number of transactions per day after checkpoint
         };
 
