@@ -194,7 +194,7 @@ public:
         return 3 * minRelayTxFee.GetFee(nSize);
         */
 
-        // NewYorkCoin: Anything below 1 DOGE is always dust
+        // NewYorkCoin: Anything below 1 NYC is always dust
         return COIN;
     }
 
