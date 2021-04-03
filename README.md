@@ -113,7 +113,7 @@ lessen the impact of sudden increases and decreases of network hashing rate.
 
 600,000+: 10,000 NewYorkCoin
 
-### Wow plz make newyorkcoind/newyorkcoin-cli/newyorkcoin-qt
+### Overview plz make newyorkcoind/newyorkcoin-cli/newyorkcoin-qt
 
   The following are developer notes on how to build NewYorkCoin on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
