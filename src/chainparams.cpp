@@ -116,7 +116,7 @@ public:
         consensus.defaultAssumeValid = uint256S("0x77e3f4a4bcb4a2c15e8015525e3d15b466f6c022f6ca82698f329edef7d9777e"); // 2,510,150
 
         // AuxPoW parameters
-        consensus.nAuxpowChainId = 0x0062; // 98 - Josh Wise!
+        consensus.nAuxpowChainId = 0x7C1; // 1985; 
         consensus.fStrictChainId = true;
         consensus.fAllowLegacyBlocks = true;
         consensus.nHeightEffective = 0;
@@ -133,6 +133,7 @@ public:
         auxpowConsensus = digishieldConsensus;
         auxpowConsensus.nHeightEffective = 4800000;
         auxpowConsensus.fAllowLegacyBlocks = false;
+        auxpowConsensus.fAllowAuxPow = true;
 
         // Assemble the binary search tree of consensus parameters
         pConsensusRoot = &digishieldConsensus;
