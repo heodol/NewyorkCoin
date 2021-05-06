@@ -20,3 +20,5 @@ bool CheckAuxPowProofOfWork(const CBlockHeader& block, const Consensus::Params& 
 
 CAmount GetNewYorkCoinMinRelayFee(const CTransaction& tx, unsigned int nBytes, bool fAllowFree);
 CAmount GetNewYorkCoinDustFee(const std::vector<CTxOut> &vout, CFeeRate &baseFeeRate);
+
+long hex2long(const char* hexstring);

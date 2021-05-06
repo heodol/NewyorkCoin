@@ -3025,8 +3025,16 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
                          REJECT_INVALID, "early-auxpow-block");
 
     // Check proof of work
-    if (block.nBits != GetNextWorkRequired(pindexPrev, &block, consensusParams))
+    if (consensusParams.fAllowLegacyBlocks)
+    {
+        if (block.nBits != GetNextWorkRequiredLegacy(pindexPrev, &block, consensusParams))
+        return state.DoS(100, false, REJECT_INVALID, "Legacy bad-diffbits", false, "incorrect proof of work");
+    }
+    else
+    {
+        if (block.nBits != GetNextWorkRequired(pindexPrev, &block, consensusParams))
         return state.DoS(100, false, REJECT_INVALID, "bad-diffbits", false, "incorrect proof of work");
+    }
 
     // Check timestamp against prev
     if (block.GetBlockTime() <= pindexPrev->GetMedianTimePast())
@@ -3039,10 +3047,10 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
     // Reject outdated version blocks when 95% (75% on testnet) of the network has upgraded:
     // check for version 2, 3 and 4 upgrades
     // NewYorkCoin: Version 2 enforcement was never used
-    if((block.GetBaseVersion() < 3 && nHeight >= consensusParams.BIP66Height) ||
-       (block.GetBaseVersion() < 4 && nHeight >= consensusParams.BIP65Height))
-            return state.Invalid(false, REJECT_OBSOLETE, strprintf("bad-version(0x%08x)", block.GetBaseVersion()),
-                                 strprintf("rejected nVersion=0x%08x block", block.GetBaseVersion()));
+    // if((block.GetBaseVersion() < 3 && nHeight >= consensusParams.BIP66Height) ||
+    //    (block.GetBaseVersion() < 4 && nHeight >= consensusParams.BIP65Height))
+    //         return state.Invalid(false, REJECT_OBSOLETE, strprintf("bad-version(0x%08x)", block.GetBaseVersion()),
+    //                              strprintf("rejected nVersion=0x%08x block", block.GetBaseVersion()));
 
     return true;
 }
