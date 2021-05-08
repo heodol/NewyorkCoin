@@ -54,7 +54,7 @@
 <context>
     <name>NewYorkCoinGUI</name>
     <message>
-        <source>&amp;Much receiving addresses...</source>
+        <source>&amp;Receiving addresses...</source>
         <translation>Alış adresleri</translation>
     </message>
     </context>

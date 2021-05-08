@@ -54,11 +54,11 @@
         <translation>&amp;Auswählen</translation>
     </message>
     <message>
-        <source>Such sending addresses</source>
+        <source>Address book</source>
         <translation>Zahlungsadressen</translation>
     </message>
     <message>
-        <source>Much receiving addresses</source>
+        <source>Receiving addresses</source>
         <translation>Empfangsadressen</translation>
     </message>
     <message>

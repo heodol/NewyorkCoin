@@ -54,7 +54,7 @@
         <translation>Chọn</translation>
     </message>
     <message>
-        <source>Such sending addresses</source>
+        <source>Address book</source>
         <translation>Địa chỉ gửi đến</translation>
     </message>
     <message>
@@ -170,11 +170,11 @@
         <translation>&amp;Thay đổi mật khẩu...</translation>
     </message>
     <message>
-        <source>&amp;Such sending addresses...</source>
+        <source>&amp;Address book...</source>
         <translation>&amp;Địa chỉ gửi</translation>
     </message>
     <message>
-        <source>&amp;Much receiving addresses...</source>
+        <source>&amp;Receiving addresses...</source>
         <translation>Địa chỉ nhận</translation>
     </message>
     <message>

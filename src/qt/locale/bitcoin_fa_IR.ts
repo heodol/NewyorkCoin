@@ -122,7 +122,7 @@
         <translation>تغییر رمز/پَس فرِیز</translation>
     </message>
     <message>
-        <source>&amp;Much receiving addresses...</source>
+        <source>&amp;Receiving addresses...</source>
         <translation>دریافت آدرس ها</translation>
     </message>
     <message>

@@ -54,11 +54,11 @@
         <translation>K&amp;iezen</translation>
     </message>
     <message>
-        <source>Such sending addresses</source>
+        <source>Address book</source>
         <translation>Verzendadressen</translation>
     </message>
     <message>
-        <source>Much receiving addresses</source>
+        <source>Receiving addresses</source>
         <translation>Ontvangstadressen</translation>
     </message>
     <message>
@@ -306,11 +306,11 @@
         <translation>&amp;Wijzig Wachtwoord</translation>
     </message>
     <message>
-        <source>&amp;Such sending addresses...</source>
+        <source>&amp;Address book...</source>
         <translation>&amp;Verstuuradressen...</translation>
     </message>
     <message>
-        <source>&amp;Much receiving addresses...</source>
+        <source>&amp;Receiving addresses...</source>
         <translation>&amp;Ontvang adressen...</translation>
     </message>
     <message>

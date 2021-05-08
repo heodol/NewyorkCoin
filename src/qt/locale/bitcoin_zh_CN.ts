@@ -54,11 +54,11 @@
         <translation>选择</translation>
     </message>
     <message>
-        <source>Such sending addresses</source>
+        <source>Address book</source>
         <translation>付款地址</translation>
     </message>
     <message>
-        <source>Much receiving addresses</source>
+        <source>Receiving addresses</source>
         <translation>收款地址</translation>
     </message>
     <message>

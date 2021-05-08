@@ -116,7 +116,7 @@ public:
         consensus.defaultAssumeValid = uint256S("0x77e3f4a4bcb4a2c15e8015525e3d15b466f6c022f6ca82698f329edef7d9777e"); // 2,510,150
 
         // AuxPoW parameters
-        consensus.nAuxpowChainId = 0x7C1; // 1985; 
+        consensus.nAuxpowChainId = 0x7C1; // 1985;
         consensus.fStrictChainId = true;
         consensus.fAllowLegacyBlocks = true;
         consensus.nHeightEffective = 0;
@@ -199,10 +199,13 @@ public:
             (6000000, uint256S("0xa787bf658bc15817e67dd9e0baee8a5cebea0a02ef13ae04eec2b4d9a557499b"))
             (6500000, uint256S("0x75ce456f6e5d286748f822c468e2011a36d34a3d2373cdbde0f422e46137d40d"))
             (6995462, uint256S("0xfbadb1e438a76d382ba67218230d5a703b105536c55153a7d0ff99c394bfe9e4"))
+            (7000000, uint256S("0x2236d4ad0d73d5729fb2fd09b7f79a325cf1e1d225ca924ddd907ab263e23ef0"))
+            (7250000, uint256S("0x166994bb42a300b714c0abfb43c17f470cab05fbe99d8f90287292e309a1d08c"))
+            (7415576, uint256S("0x3d97e38f48ee3765f77386d269b3cb925af4e4e95266ee37345b34d54f650254"))
 };
 
 chainTxData = ChainTxData{
-            1607818279, // * UNIX timestamp of last checkpoint block
+            1620505325, // * UNIX timestamp of last checkpoint block
             8159532,   // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
             7000.0     // * estimated number of transactions per day after checkpoint
@@ -314,7 +317,7 @@ public:
         auxpowConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
       assert(consensus.hashGenesisBlock == uint256S("0x24463e4d3c625b0a9059f309044c2cf0d7e196cf2a6ecce901f24f681be33c8f"));
 
-     
+
         vFixedSeeds.clear();
         vSeeds.clear();
         //vSeeds.push_back(CDNSSeedData("jrn.me.uk", "testseed.jrn.me.uk"));
@@ -324,7 +327,7 @@ public:
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,241); // 0xf1
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xb2)(0x1e).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xad)(0xe4).convert_to_container<std::vector<unsigned char> >();
-      
+
 
   //TODO: fix this for dogecoin -- plddr
         //vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
@@ -455,7 +458,7 @@ public:
    //    assert(consensus.hashGenesisBlock == uint256S("0x65b15927834f1609f719b92200e2c96748ccac878b679a09ebbe851c340710b0"));
     // assert(genesis.hashMerkleRoot == uint256S("0x51843d49a066367d030a1b3e4c0aa21d379b1e1877caf7fd8cdacc1debf31bce"));
 
-     
+
         vFixedSeeds.clear();
         vSeeds.clear();
         //vSeeds.push_back(CDNSSeedData("jrn.me.uk", "testseed.jrn.me.uk"));
@@ -485,7 +488,7 @@ public:
             1000  // * estimated number of transactions per day after checkpoint
         };
 
-    
+
 };
 
 

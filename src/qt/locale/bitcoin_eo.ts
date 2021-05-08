@@ -54,7 +54,7 @@
         <translation>&amp;Elekti</translation>
     </message>
     <message>
-        <source>Such sending addresses</source>
+        <source>Address book</source>
         <translation>Sendaj adresoj</translation>
     </message>
     <message>

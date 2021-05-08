@@ -54,11 +54,11 @@
         <translation>&amp;Vælg</translation>
     </message>
     <message>
-        <source>Such sending addresses</source>
+        <source>Address book</source>
         <translation>Afsendelsesadresser</translation>
     </message>
     <message>
-        <source>Much receiving addresses</source>
+        <source>Receiving addresses</source>
         <translation>Modtagelsesadresser</translation>
     </message>
     <message>
@@ -306,11 +306,11 @@
         <translation>&amp;Skift adgangskode…</translation>
     </message>
     <message>
-        <source>&amp;Such sending addresses...</source>
+        <source>&amp;Address book...</source>
         <translation>&amp;Afsendelsesadresser…</translation>
     </message>
     <message>
-        <source>&amp;Much receiving addresses...</source>
+        <source>&amp;Receiving addresses...</source>
         <translation>&amp;Modtagelsesadresser…</translation>
     </message>
     <message>

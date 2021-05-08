@@ -54,11 +54,11 @@
         <translation>選択 (&amp;C)</translation>
     </message>
     <message>
-        <source>Such sending addresses</source>
+        <source>Address book</source>
         <translation>送金用</translation>
     </message>
     <message>
-        <source>Much receiving addresses</source>
+        <source>Receiving addresses</source>
         <translation>受け取りアドレス</translation>
     </message>
     <message>

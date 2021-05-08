@@ -54,11 +54,11 @@
         <translation>V&amp;ali</translation>
     </message>
     <message>
-        <source>Such sending addresses</source>
+        <source>Address book</source>
         <translation>Saatvad aadressid</translation>
     </message>
     <message>
-        <source>Much receiving addresses</source>
+        <source>Receiving addresses</source>
         <translation>Vastuvõtvad aadressid</translation>
     </message>
     <message>

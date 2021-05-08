@@ -98,11 +98,11 @@
         <translation>&amp;Newid cyfrinymadrodd...</translation>
     </message>
     <message>
-        <source>&amp;Such sending addresses...</source>
+        <source>&amp;Address book...</source>
         <translation>&amp;Cyfeiriadau anfon...</translation>
     </message>
     <message>
-        <source>&amp;Much receiving addresses...</source>
+        <source>&amp;Receiving addresses...</source>
         <translation>&amp;Cyfeiriadau derbyn...</translation>
     </message>
     <message>

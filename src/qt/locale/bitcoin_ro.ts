@@ -130,11 +130,11 @@
         <translation>&amp;Schimbă parola...</translation>
     </message>
     <message>
-        <source>&amp;Such sending addresses...</source>
+        <source>&amp;Address book...</source>
         <translation>&amp;Trimite adresele...</translation>
     </message>
     <message>
-        <source>&amp;Much receiving addresses...</source>
+        <source>&amp;Receiving addresses...</source>
         <translation>&amp;Primește adresele...</translation>
     </message>
     <message>

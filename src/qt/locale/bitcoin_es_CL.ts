@@ -126,11 +126,11 @@
         <translation>&amp;Cambiar la contraseña...</translation>
     </message>
     <message>
-        <source>&amp;Such sending addresses...</source>
+        <source>&amp;Address book...</source>
         <translation>Mandando direcciones</translation>
     </message>
     <message>
-        <source>&amp;Much receiving addresses...</source>
+        <source>&amp;Receiving addresses...</source>
         <translation>Recibiendo direcciones</translation>
     </message>
     <message>

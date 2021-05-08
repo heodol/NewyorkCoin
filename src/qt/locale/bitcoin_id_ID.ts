@@ -54,7 +54,7 @@
         <translation>&amp;Pilih</translation>
     </message>
     <message>
-        <source>Such sending addresses</source>
+        <source>Address book</source>
         <translation>Alamat-alamat pengirim</translation>
     </message>
     <message>
@@ -302,11 +302,11 @@
         <translation>&amp;Ubah Kata Kunci...</translation>
     </message>
     <message>
-        <source>&amp;Such sending addresses...</source>
+        <source>&amp;Address book...</source>
         <translation>&amp;Alamat-alamat untuk mengirim...</translation>
     </message>
     <message>
-        <source>&amp;Much receiving addresses...</source>
+        <source>&amp;Receiving addresses...</source>
         <translation>&amp;Alamat-alamat untuk menerima...</translation>
     </message>
     <message>

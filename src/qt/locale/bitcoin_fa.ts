@@ -54,11 +54,11 @@
         <translation>انتخاب</translation>
     </message>
     <message>
-        <source>Such sending addresses</source>
+        <source>Address book</source>
         <translation>آدرس های فرستنده</translation>
     </message>
     <message>
-        <source>Much receiving addresses</source>
+        <source>Receiving addresses</source>
         <translation>آدرس های گیرنده</translation>
     </message>
     <message>
@@ -270,11 +270,11 @@
         <translation>&amp;تغییر گذرواژه...</translation>
     </message>
     <message>
-        <source>&amp;Such sending addresses...</source>
+        <source>&amp;Address book...</source>
         <translation>&amp;در حال ارسال آدرس ها...</translation>
     </message>
     <message>
-        <source>&amp;Much receiving addresses...</source>
+        <source>&amp;Receiving addresses...</source>
         <translation>&amp;در حال دریافت آدرس ها...</translation>
     </message>
     <message>

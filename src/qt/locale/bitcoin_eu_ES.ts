@@ -54,11 +54,11 @@
         <translation>&amp;Aukeratu</translation>
     </message>
     <message>
-        <source>Such sending addresses</source>
+        <source>Address book</source>
         <translation>Helbideak bidaltzen</translation>
     </message>
     <message>
-        <source>Much receiving addresses</source>
+        <source>Receiving addresses</source>
         <translation>Helbideak jasotzen</translation>
     </message>
     <message>
@@ -246,7 +246,7 @@
         <translation>&amp;Aukerak...</translation>
     </message>
     <message>
-        <source>&amp;Much receiving addresses...</source>
+        <source>&amp;Receiving addresses...</source>
         <translation>Helbideak jasotzen</translation>
     </message>
     <message>

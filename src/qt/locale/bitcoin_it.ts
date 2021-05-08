@@ -54,11 +54,11 @@
         <translation>Sc&amp;egli</translation>
     </message>
     <message>
-        <source>Such sending addresses</source>
+        <source>Address book</source>
         <translation>Indirizzi d'invio</translation>
     </message>
     <message>
-        <source>Much receiving addresses</source>
+        <source>Receiving addresses</source>
         <translation>Indirizzi di ricezione</translation>
     </message>
     <message>

@@ -54,11 +54,11 @@
         <translation>בחר</translation>
     </message>
     <message>
-        <source>Such sending addresses</source>
+        <source>Address book</source>
         <translation>כתובת לשליחה</translation>
     </message>
     <message>
-        <source>Much receiving addresses</source>
+        <source>Receiving addresses</source>
         <translation>מקבל כתובות</translation>
     </message>
     <message>

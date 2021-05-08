@@ -50,7 +50,7 @@
         <translation>เลือกที่อยู่เพื่อส่งเหรียญไปไว้</translation>
     </message>
     <message>
-        <source>Such sending addresses</source>
+        <source>Address book</source>
         <translation>ส่งที่อยู่</translation>
     </message>
     </context>
@@ -162,11 +162,11 @@
         <translation>&amp;เปลี่ยนรหัสผ่าน...</translation>
     </message>
     <message>
-        <source>&amp;Such sending addresses...</source>
+        <source>&amp;Address book...</source>
         <translation>&amp;ที่เก็บเงิน ที่จะส่ง newyorkcoin</translation>
     </message>
     <message>
-        <source>&amp;Much receiving addresses...</source>
+        <source>&amp;Receiving addresses...</source>
         <translation>&amp;ที่เก็บเงิน ที่จะรับ newyorkcoin</translation>
     </message>
     <message>

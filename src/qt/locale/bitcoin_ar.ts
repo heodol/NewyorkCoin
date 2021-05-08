@@ -54,11 +54,11 @@
         <translation>&amp;اختر</translation>
     </message>
     <message>
-        <source>Such sending addresses</source>
+        <source>Address book</source>
         <translation>ارسال العناوين</translation>
     </message>
     <message>
-        <source>Much receiving addresses</source>
+        <source>Receiving addresses</source>
         <translation>استقبال العناوين</translation>
     </message>
     <message>
