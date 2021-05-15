@@ -3027,7 +3027,7 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
     // Check proof of work
     if (consensusParams.fAllowLegacyBlocks)
     {
-        if (block.nBits != GetNextWorkRequiredLegacy(pindexPrev, &block, consensusParams))
+        if ((unsigned int)block.nBits != GetNextWorkRequiredLegacy(pindexPrev, &block, consensusParams))
         return state.DoS(100, false, REJECT_INVALID, "Legacy bad-diffbits", false, "incorrect proof of work");
     }
     else

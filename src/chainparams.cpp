@@ -116,7 +116,7 @@ public:
         consensus.defaultAssumeValid = uint256S("0x77e3f4a4bcb4a2c15e8015525e3d15b466f6c022f6ca82698f329edef7d9777e"); // 2,510,150
 
         // AuxPoW parameters
-        consensus.nAuxpowChainId = 0x7C1; // 1985; 
+        consensus.nAuxpowChainId = 0x7C1; // 1985;
         consensus.fStrictChainId = true;
         consensus.fAllowLegacyBlocks = true;
         consensus.nHeightEffective = 0;
@@ -148,7 +148,7 @@ public:
         pchMessageStart[1] = 0xc0;
         pchMessageStart[2] = 0xc0;
         pchMessageStart[3] = 0xc0;
-        vAlertPubKey = ParseHex("045ce76796722fe8f6ef6e28388e780efda1c81d03ef5cdef1c450ad6adb9cc59e451c418da01cab41e97491249a7db9e24d96b4d193913eb8158928a794202fee");
+        vAlertPubKey = ParseHex("04AFC6B9D279C647C67C250BC4C68F5E9BD714867D8D45B6E54FEEFFA6CB9074EE7CBF69EB8FF388304604C2E00661601502B42E3CF71E934B4A5EAB0D5B209BFD");
         nDefaultPort = 17020;
         nPruneAfterHeight = 100000;
 
@@ -314,7 +314,7 @@ public:
         auxpowConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
       assert(consensus.hashGenesisBlock == uint256S("0x24463e4d3c625b0a9059f309044c2cf0d7e196cf2a6ecce901f24f681be33c8f"));
 
-     
+
         vFixedSeeds.clear();
         vSeeds.clear();
         //vSeeds.push_back(CDNSSeedData("jrn.me.uk", "testseed.jrn.me.uk"));
@@ -324,7 +324,7 @@ public:
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,241); // 0xf1
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xb2)(0x1e).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xad)(0xe4).convert_to_container<std::vector<unsigned char> >();
-      
+
 
   //TODO: fix this for dogecoin -- plddr
         //vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
@@ -455,7 +455,7 @@ public:
    //    assert(consensus.hashGenesisBlock == uint256S("0x65b15927834f1609f719b92200e2c96748ccac878b679a09ebbe851c340710b0"));
     // assert(genesis.hashMerkleRoot == uint256S("0x51843d49a066367d030a1b3e4c0aa21d379b1e1877caf7fd8cdacc1debf31bce"));
 
-     
+
         vFixedSeeds.clear();
         vSeeds.clear();
         //vSeeds.push_back(CDNSSeedData("jrn.me.uk", "testseed.jrn.me.uk"));
@@ -485,7 +485,7 @@ public:
             1000  // * estimated number of transactions per day after checkpoint
         };
 
-    
+
 };
 
 
