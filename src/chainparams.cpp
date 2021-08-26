@@ -80,10 +80,10 @@ public:
         consensus.nMajorityRejectBlockOutdated = 1900;
         consensus.nMajorityWindow = 2000;
         // BIP34 is never enforced in Dogecoin v2 blocks, so we enforce from v3
-        consensus.BIP34Height = 1034383;
+        consensus.BIP34Height = 8079124;
         consensus.BIP34Hash = uint256S("0x80d1364201e5df97e696c03bdd24dc885e8617b9de51e453c10a4f629b1e797a");
-        // consensus.BIP65Height = 1032483; // Not enabled in Doge yet
-        consensus.BIP66Height = 1034383; // 80d1364201e5df97e696c03bdd24dc885e8617b9de51e453c10a4f629b1e797a - this is the last block that could be v2, 1900 blocks past the last v2 block
+        consensus.BIP65Height = 8604724; // Not enabled in Doge yet
+        consensus.BIP66Height = 9130324; // 80d1364201e5df97e696c03bdd24dc885e8617b9de51e453c10a4f629b1e797a - this is the last block that could be v2, 1900 blocks past the last v2 block
         consensus.powLimit = uint256S("0x00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 20;
         consensus.nPowTargetTimespan = 2 * 60 * 60; // pre-digishield: 4 hours
         consensus.nPowTargetSpacing = 30; // 1 minute
@@ -123,6 +123,7 @@ public:
 
         // Blocks 145000 - 371336 are Digishield without AuxPoW
         digishieldConsensus = consensus;
+        digishieldConsensus.fAllowLegacyBlocks = false;
         digishieldConsensus.nHeightEffective = 4800000;
         digishieldConsensus.fSimplifiedRewards = true;
         digishieldConsensus.fDigishieldDifficultyCalculation = true;
@@ -157,7 +158,7 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
         digishieldConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         auxpowConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
-           assert(consensus.hashGenesisBlock == uint256S("0x5597f25c062a3038c7fd815fe46c67dedfcb3c839fbc8e01ed4044540d08fe48"));
+        assert(consensus.hashGenesisBlock == uint256S("0x5597f25c062a3038c7fd815fe46c67dedfcb3c839fbc8e01ed4044540d08fe48"));
         assert(genesis.hashMerkleRoot == uint256S("0x2bad42ac6e0ccc4808d8df0fd50ac8634eea335b1412b1ef52864b430a87b262"));
 
         // Note that of those with the service bits flag, most only support a subset of possible options
@@ -303,19 +304,19 @@ public:
         minDifficultyConsensus.pRight = &auxpowConsensus;
 
         pchMessageStart[0] = 0xac;
-      pchMessageStart[1] = 0xb1;
-      pchMessageStart[2] = 0xc5;
-      pchMessageStart[3] = 0xdc;
-      vAlertPubKey = ParseHex("045ce76796722fe8f6ef6e28388e780efda1c81d03ef5cdef1c450ad6adb9cc59e451c418da01cab41e97491249a7db9e24d96b4d193913eb8158928a794202fee");
-          nDefaultPort = 27020;
+        pchMessageStart[1] = 0xb1;
+        pchMessageStart[2] = 0xc5;
+        pchMessageStart[3] = 0xdc;
+        vAlertPubKey = ParseHex("045ce76796722fe8f6ef6e28388e780efda1c81d03ef5cdef1c450ad6adb9cc59e451c418da01cab41e97491249a7db9e24d96b4d193913eb8158928a794202fee");
+        nDefaultPort = 27020;
         nPruneAfterHeight = 1000;
 
-      genesis = CreateGenesisBlock(1394101189, 1556996, 0x1e0ffff0, 1, 88 * COIN);
+        genesis = CreateGenesisBlock(1394101189, 1556996, 0x1e0ffff0, 1, 88 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         digishieldConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         minDifficultyConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         auxpowConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
-      assert(consensus.hashGenesisBlock == uint256S("0x24463e4d3c625b0a9059f309044c2cf0d7e196cf2a6ecce901f24f681be33c8f"));
+        assert(consensus.hashGenesisBlock == uint256S("0x24463e4d3c625b0a9059f309044c2cf0d7e196cf2a6ecce901f24f681be33c8f"));
 
 
         vFixedSeeds.clear();
@@ -382,12 +383,12 @@ public:
         consensus.BIP34Hash = uint256S("0x21b8b97dcdb94caa67c7f8f6dbf22e61e0cfe0e46e1fff3528b22864659e9b38");
         // consensus.BIP65Height = 581885; // 00000000007f6655f22f98e72ed80d8b06dc761d5da09df0fa1dc4be4f861eb6
         consensus.BIP66Height = 708658; // 21b8b97dcdb94caa67c7f8f6dbf22e61e0cfe0e46e1fff3528b22864659e9b38 - this is the last block that could be v2, 1900 blocks past the last v2 block
-        consensus.powLimit = uint256S("0x00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 20;
-        consensus.nPowTargetTimespan = 4 * 60 * 60; // pre-digishield: 4 hours
-        consensus.nPowTargetSpacing = 60; // 1 minute
+        consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); ;
+        consensus.nPowTargetTimespan = 2 * 60 * 60; // pre-digishield: 4 hours
+        consensus.nPowTargetSpacing = 30; // 1 minute
         consensus.fPowNoRetargeting = false;
-        consensus.nRuleChangeActivationThreshold = 2880; // 2 days (note this is significantly lower than Bitcoin standard)
-        consensus.nMinerConfirmationWindow = 10080; // 60 * 24 * 7 = 10,080 blocks, or one week
+        consensus.nRuleChangeActivationThreshold = 7182; // 75% of mainnet
+        consensus.nMinerConfirmationWindow = 7560;      // 75% of mainnet values
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
@@ -404,59 +405,50 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 0; // Disabled
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000000000001030d1382ade");
+        consensus.nMinimumChainWork = uint256S("0x00");
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x6943eaeaba98dc7d09f7e73398daccb4abcabb18b66c8c875e52b07638d93951"); // 900,000
+        consensus.defaultAssumeValid = uint256S("0x00"); // 900,000
 
-        // AuxPoW parameters
-        consensus.nAuxpowChainId = 0x7C1; // 98 - Josh Wise!
-        consensus.fStrictChainId = false;
-        consensus.nHeightEffective = 0;
+         // AuxPoW parameters
+        consensus.nAuxpowChainId = 0x7C1; // 1985;
+        consensus.fStrictChainId = true;
         consensus.fAllowLegacyBlocks = true;
+        consensus.nHeightEffective = 0;
 
-        // Blocks 145000 - 157499 are Digishield without minimum difficulty on all blocks
+        // Blocks 145000 - 371336 are Digishield without AuxPoW
         digishieldConsensus = consensus;
-        digishieldConsensus.nHeightEffective = 155000;
-        digishieldConsensus.nPowTargetTimespan = 60; // post-digishield: 1 minute
-        digishieldConsensus.fDigishieldDifficultyCalculation = true;
+        digishieldConsensus.nHeightEffective = 0;
         digishieldConsensus.fSimplifiedRewards = true;
-        digishieldConsensus.fPowAllowMinDifficultyBlocks = false;
+        digishieldConsensus.fDigishieldDifficultyCalculation = true;
+        digishieldConsensus.nPowTargetTimespan = 60; // post-digishield: 1 minute
         digishieldConsensus.nCoinbaseMaturity = 30;
 
-        // Blocks 157500 - 158099 are Digishield with minimum difficulty on all blocks
-        minDifficultyConsensus = digishieldConsensus;
-        minDifficultyConsensus.nHeightEffective = 15500;
-        minDifficultyConsensus.fPowAllowDigishieldMinDifficultyBlocks = true;
-        minDifficultyConsensus.fPowAllowMinDifficultyBlocks = true;
-
-        // Enable AuxPoW at 158100
-        auxpowConsensus = minDifficultyConsensus;
-        auxpowConsensus.nHeightEffective = 15500;
-        auxpowConsensus.fPowAllowDigishieldMinDifficultyBlocks = true;
+        // Blocks 371337+ are AuxPoW
+        auxpowConsensus = digishieldConsensus;
+        auxpowConsensus.nHeightEffective = 0;
         auxpowConsensus.fAllowLegacyBlocks = false;
 
-        // Assemble the binary search tree of parameters
+        // Assemble the binary search tree of consensus parameters
         pConsensusRoot = &digishieldConsensus;
         digishieldConsensus.pLeft = &consensus;
-        digishieldConsensus.pRight = &minDifficultyConsensus;
-        minDifficultyConsensus.pRight = &auxpowConsensus;
+        digishieldConsensus.pRight = &auxpowConsensus;
 
         pchMessageStart[0] = 0xfa;
         pchMessageStart[1] = 0xbf;
         pchMessageStart[2] = 0xb5;
         pchMessageStart[3] = 0xda;
-      vAlertPubKey = ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f");
-          nDefaultPort = 18444;
+		vAlertPubKey = ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f");
+        nDefaultPort = 18444;
         nPruneAfterHeight = 1000;
    // const char* pszTimestamp = "A Coin for New York City regtest";
-      genesis = CreateGenesisBlock(1617292184, 2858852, 0x1e0ffff0, 1, 88 * COIN);
+        genesis = CreateGenesisBlock(1617292184, 2858852, 0x1e0ffff0, 1, 88 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         digishieldConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         minDifficultyConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         auxpowConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
-   //    assert(consensus.hashGenesisBlock == uint256S("0x65b15927834f1609f719b92200e2c96748ccac878b679a09ebbe851c340710b0"));
-    // assert(genesis.hashMerkleRoot == uint256S("0x51843d49a066367d030a1b3e4c0aa21d379b1e1877caf7fd8cdacc1debf31bce"));
+		//assert(consensus.hashGenesisBlock == uint256S("0x65b15927834f1609f719b92200e2c96748ccac878b679a09ebbe851c340710b0"));
+		//assert(genesis.hashMerkleRoot == uint256S("0x51843d49a066367d030a1b3e4c0aa21d379b1e1877caf7fd8cdacc1debf31bce"));
 
 
         vFixedSeeds.clear();
@@ -468,8 +460,8 @@ public:
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,241); // 0xf1
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xb2)(0x1e).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xad)(0xe4).convert_to_container<std::vector<unsigned char> >();
-        //TODO: fix this for dogecoin -- plddr
-        //vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
+        
+        vFixedSeeds.clear();
 
         fMiningRequiresPeers = true;
         fDefaultConsistencyChecks = false;
@@ -482,10 +474,9 @@ public:
         };
 
         chainTxData = ChainTxData{
-            // Data as of block a2179767a87ee4e95944703976fee63578ec04fa3ac2fc1c9c2c83587d096977 (height 1202214)
-            1440601451, // * UNIX timestamp of last checkpoint block
-            1119061,    // * total number of transactions between genesis and last checkpoint
-            1000  // * estimated number of transactions per day after checkpoint
+            0, 
+            0,    
+            0  
         };
 
 
